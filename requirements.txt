@@ -3,3 +3,4 @@ leafmap
 pycrs
 ipyleaflet
 folium
+httpx
