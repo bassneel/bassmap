@@ -23,8 +23,10 @@ class mapomatic(Map):
         self.add_layer(marker)
     
     def add_shp(self, in_shp, **kwargs):
-        geo_data = GeoData(geo_dataframe=gpd.read_file(in_shp), **kwargs)
-        self.add_layer(geo_data)
+        geo_data = gpd.read_file(in_shp)
+        geo_json = GeoJSON(data=geo_data.to_json(), name=kwargs.get('layer_name', 'Layer'))
+        geo_json.style = kwargs.get('style', {})
+        self.add_layer(geo_json)
 
     def add_legend(self, legend_title, legend_dict):
         legend_items = []
