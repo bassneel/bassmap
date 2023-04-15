@@ -24,7 +24,9 @@ class mapomatic(Map):
     
     def add_shp(self, in_shp, **kwargs):
         geo_data = gpd.read_file(in_shp)
-        geo_json = GeoJSON(data=geo_data.to_json(), name=kwargs.get('layer_name', 'Layer'))
+        geo_data = geo_data.set_crs(epsg=4326)
+        geo_data = geo_data.to_crs("EPSG:4326")
+        geo_json = GeoJSON(data=geo_data.__geo_interface__, name=kwargs.get('layer_name', 'Layer'))
         geo_json.style = kwargs.get('style', {})
         self.add_layer(geo_json)
 
