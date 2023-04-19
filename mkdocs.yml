@@ -48,5 +48,7 @@ nav:
     - FAQ: faq.md
     - Changelog: changelog.md
     - Report Issues: https://github.com/bassneel/bassmap/issues
+    - Examples:
+          - examples/intro.ipynb
     - API Reference:
           - bassmap module: bassmap.md
