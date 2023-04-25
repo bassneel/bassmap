@@ -2,7 +2,6 @@ leafmap
 pycrs
 httpx
 requests
-io
 json
 geopandas
 ipyleaflet
