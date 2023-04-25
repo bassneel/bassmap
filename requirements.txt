@@ -7,5 +7,4 @@ ipyleaflet
 rasterio
 numpy
 matplotlib
-base64
 folium
