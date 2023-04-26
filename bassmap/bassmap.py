@@ -6,6 +6,7 @@ import io
 import json
 import geopandas as gpd
 import ipyleaflet
+import random
 
 from ipyleaflet import Map, TileLayer, basemaps, GeoJSON, LayersControl, ImageOverlay
 import rasterio
@@ -18,9 +19,11 @@ import folium
 
 class Mapomatic(Map):
     
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.markers = []
+    def __init__(self, center=[20,0], **kwargs) -> None:
+        if "scroll_wheel_zoom" not in kwargs:
+            kwargs["scroll_wheel_zoom"] = True
+        
+        super().__init__(center = center, **kwargs)
     
     def add_marker(self, marker):
         self.markers.append(marker)
@@ -35,34 +38,73 @@ class Mapomatic(Map):
         )
         self.add_layer(image)
     
-    def add_raster(self, cog_path, cmap='viridis', opacity=1.0, layer_name=None):
+    def add_raster(self, url, name='Raster', fit_bounds=True, **kwargs):
+        """Adds a raster layer to the map.
+        Args:
+            url (str): The URL of the raster layer.
+            name (str, optional): The name of the raster layer. Defaults to 'Raster'.
+            fit_bounds (bool, optional): Whether to fit the map bounds to the raster layer. Defaults to True.
+        """
+        import httpx
+
+        titiler_endpoint = "https://titiler.xyz"
+
+        r = httpx.get(
+            f"{titiler_endpoint}/cog/info",
+            params = {
+                "url": url,
+            }
+        ).json()
+
+        bounds = r["bounds"]
+
+        r = httpx.get(
+            f"{titiler_endpoint}/cog/tilejson.json",
+            params = {
+                "url": url,
+            }
+        ).json()
+
+        tile = r["tiles"][0]
+
+        self.add_tile_layer(url=tile, name=name, **kwargs)
+
+        if fit_bounds:
+            bbox = [[bounds[1], bounds[0]], [bounds[3], bounds[2]]]
+            self.fit_bounds(bbox)
+    def add_tile_layer(self, url, name, attribution = "", **kwargs):
+        """Adds a tile layer to the map.
         
-        with rasterio.open(cog_path) as src:
-            data = src.read(1, out_shape=(1, int(src.height), int(src.width)))
-            bounds = src.bounds
-            transform = src.transform
-
-        # Normalize the data to be between 0 and 1
-        data_norm = (data - np.nanmin(data)) / (np.nanmax(data) - np.nanmin(data))
-
-        # Convert the data to RGBA using the specified colormap
-        cmap = plt.get_cmap(cmap)
-        data_rgba = (cmap(data_norm) * 255).astype(np.uint8)
-        data_rgba[:, :, 3] = (np.array(opacity) * 255).astype(np.uint8)
-
-        # Ensure that the array is C-contiguous
-        data_rgba = np.ascontiguousarray(data_rgba)
-
-        # Create a new TileLayer from the COG data
-        tile_layer = TileLayer(
-            url='data:image/tiff;base64,' + base64.b64encode(data_rgba).decode('utf-8'),
-            bounds=((bounds.bottom, bounds.left), (bounds.top, bounds.right)),
-            opacity=opacity,
-            name=layer_name
+        Args:
+            url (str): The URL of the tile layer.
+            name (str): The name of the tile layer
+            attribution (str, optional): The attribution of the tile layer. Defaults to **
+            """
+        tile_layer = ipyleaflet.TileLayer(
+            url = url,
+            name = name,
+            attribution = attribution,
+            **kwargs
         )
-
-        # Add the new TileLayer to the map
         self.add_layer(tile_layer)
+    
+    def add_layers_control(self, position="topright", **kwargs):
+        """Adds a layers control to the map.
+        
+        Args:
+            kwargs: Keyword arguments to pass to the layers control
+        """
+        layers_control = ipyleaflet.LayersControl(position = position, **kwargs)
+        self.add_control(layers_control)
+
+    def add_fullscreen_control(self, position="topleft"):
+        """Adds a fullscreen control to the map.
+        
+        Args:
+            kwargs: Keyward arguments to pass to the layers control.
+        """
+        fullscreen_control = ipyleaflet.FullScreenControl(position=position)
+        self.add_control(fullscreen_control)
     
     def add_basemap(self, basemap_name, url_template):
         """

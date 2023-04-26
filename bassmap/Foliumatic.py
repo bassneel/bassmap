@@ -42,20 +42,16 @@ class Foliumatic(folium.Map):
         )
         self.add_child(new_layer)
 
-    def add_shp(self, shp_url=None, shp_path=None):
-        if shp_url:
-            # read the shapefile from the URL
-            gdf = gpd.read_file(shp_url)
-        elif shp_path:
-            # read the shapefile from the local file path
-            gdf = gpd.read_file(shp_url)
-        else:
-            raise ValueError("Either shp_url or shp_path must be provided")
+    def add_shp(self, data, name='Shapefile', **kwargs):
+        """Adds a Shapefile layer to the map.
         
-        # add the shapefile to the map
-        folium.GeoJson(gdf).add_to(self.map)
-
-        return self.map
+        Args:
+            data (str): the path to the Shapefile.
+        """
+        import geopandas as gpd
+        gdf = gpd.read_file(data)
+        geojson = gdf.__geo_interface__
+        self.add_geojson(geojson, name=name, **kwargs)
 
     def add_geojson(self, geojson_data):
         """
