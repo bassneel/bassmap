@@ -14,21 +14,15 @@ class Foliumatic(folium.Map):
     def __init__(self, lat=0, lon=0, zoom_start=2):
         self.map = folium.Map(location=[lat, lon], zoom_start=zoom_start)
 
-    def add_tile_layer(self, url, name, attribution = "", **kwargs):
-        """Adds a tile layer to the map.
-        
-        Args:
-            url (str): The URL of the tile layer.
-            name (str): The name of the tile layer
-            attribution (str, optional): The attribution of the tile layer. Defaults to **
-            """
-        tile_layer = folium.TileLayer(
-            tiles= url,
-            name = name,
-            attr = attribution,
-            **kwargs
-        )
-        self.add_child(tile_layer)
+    def add_tile_layer(self, tile_url='OpenStreetMap', tile_name=None):
+        if tile_name:
+            folium.TileLayer(tiles=tile_url, name=tile_name).add_to(self.map)
+        else:
+            folium.TileLayer(tiles=tile_url).add_to(self.map)
+
+        folium.LayerControl().add_to(self.map)
+
+        return self.map
 
     def add_basemap(self, basemap_name, url_template):
         """
@@ -48,24 +42,17 @@ class Foliumatic(folium.Map):
         )
         self.add_child(new_layer)
 
-    def add_shp(self, data, name='Shapefile', **kwargs):
-        """Adds a Shapefile layer to the map.
-        
-        Args:
-            data (str): the path to the Shapefile.
-        """
-        import geopandas as gpd
+    def add_shp(self, data, **kwargs):
         gdf = gpd.read_file(data)
         geojson = gdf.__geo_interface__
-        self.add_geojson(geojson, name=name, **kwargs)
+        self.add_geojson(geojson, **kwargs)
 
-    def add_geojson(self, geojson_data, name=None):
+    def add_geojson(self, geojson_data):
         """
         Adds a GeoJSON layer to the map.
-
+        
         Parameters:
         geojson_data (str or dict): The GeoJSON file path, HTTP URL or dictionary to add to the map.
-        name (str, optional): The name of the GeoJSON layer. Defaults to None.
         """
         if isinstance(geojson_data, str):
             # Load GeoJSON from file or HTTP URL
@@ -80,9 +67,7 @@ class Foliumatic(folium.Map):
             geojson_layer = folium.GeoJson(data=geojson_data)
         else:
             raise ValueError('Invalid input format. Must be GeoJSON file path, HTTP URL or dictionary.')
-
-        if name:
-            geojson_layer.add_child(folium.Popup(name))
+            
         geojson_layer.add_to(self)
     
     def __init__(self, **kwargs):
