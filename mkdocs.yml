@@ -50,5 +50,7 @@ nav:
     - Report Issues: https://github.com/bassneel/bassmap/issues
     - Examples:
           - examples/intro.ipynb
+          - examples/Mapomatic.ipynb
     - API Reference:
           - bassmap module: bassmap.md
+          - Foliumatic module: Foliumatic.md
