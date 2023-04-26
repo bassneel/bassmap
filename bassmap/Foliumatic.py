@@ -14,15 +14,21 @@ class Foliumatic(folium.Map):
     def __init__(self, lat=0, lon=0, zoom_start=2):
         self.map = folium.Map(location=[lat, lon], zoom_start=zoom_start)
 
-    def add_tile_layer(self, tile_url='OpenStreetMap', tile_name=None):
-        if tile_name:
-            folium.TileLayer(tiles=tile_url, name=tile_name).add_to(self.map)
-        else:
-            folium.TileLayer(tiles=tile_url).add_to(self.map)
-
-        folium.LayerControl().add_to(self.map)
-
-        return self.map
+    def add_tile_layer(self, url, name, attribution = "", **kwargs):
+        """Adds a tile layer to the map.
+        
+        Args:
+            url (str): The URL of the tile layer.
+            name (str): The name of the tile layer
+            attribution (str, optional): The attribution of the tile layer. Defaults to **
+            """
+        tile_layer = folium.TileLayer(
+            tiles= url,
+            name = name,
+            attr = attribution,
+            **kwargs
+        )
+        self.add_child(tile_layer)
 
     def add_basemap(self, basemap_name, url_template):
         """
