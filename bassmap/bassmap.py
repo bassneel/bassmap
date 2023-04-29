@@ -8,7 +8,8 @@ import geopandas as gpd
 import ipyleaflet
 import random
 
-from ipyleaflet import Map, TileLayer, basemaps, GeoJSON, LayersControl, ImageOverlay
+from ipyleaflet import Map
+from ipyleaflet import TileLayer, basemaps, GeoJSON, LayersControl, ImageOverlay
 import rasterio
 import rasterio.plot
 from rasterio.plot import show
@@ -214,7 +215,16 @@ class Mapomatic(Map):
         self.add_control(control)
 
     def select_basemap(self, **kwargs):
-                
+        """
+        Adds a basemap selector to the map instance.
+
+        Parameters:
+            self: bassmap Mapomatic: map instance called by user
+        
+        Returns:
+            bassmap Mapomatic: displays drop down menu when called to the Mapomatic class
+        """
+
         output_widget = widgets.Output(layout = {'border': '1px solid green'})
         output_widget.clear_output()
         basemap_ctrl = WidgetControl(widget = output_widget, position='topright')
