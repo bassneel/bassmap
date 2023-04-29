@@ -17,7 +17,7 @@ import matplotlib.pyplot as plt
 import base64
 import folium
 import xyzservices.providers as xyz
-from pyright import display
+from ipyleaflet import display
 import ipywidgets as widgets
 from ipyleaflet import WidgetControl
 
