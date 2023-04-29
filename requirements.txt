@@ -8,3 +8,4 @@ rasterio
 numpy
 matplotlib
 folium
+pyright
