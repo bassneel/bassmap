@@ -52,6 +52,7 @@ nav:
           - examples/intro.ipynb
           - examples/Mapomatic.ipynb
           - examples/Foliumatic.ipynb
+          - examples/select_basemap.ipynb
     - API Reference:
           - bassmap module: bassmap.md
           - Foliumatic module: Foliumatic.md
