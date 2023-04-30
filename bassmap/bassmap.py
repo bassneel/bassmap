@@ -21,6 +21,7 @@ import xyzservices.providers as xyz
 from ipyleaflet import display
 import ipywidgets as widgets
 from ipyleaflet import WidgetControl
+from IPython.display import HTML
 
 class Mapomatic(Map):
     
@@ -77,6 +78,7 @@ class Mapomatic(Map):
         if fit_bounds:
             bbox = [[bounds[1], bounds[0]], [bounds[3], bounds[2]]]
             self.fit_bounds(bbox)
+
     def add_tile_layer(self, url, name, attribution = "", **kwargs):
         """Adds a tile layer to the map.
         
@@ -225,24 +227,43 @@ class Mapomatic(Map):
             bassmap Mapomatic: displays drop down menu when called to the Mapomatic class
         """
 
-        output_widget = widgets.Output(layout = {'border': '1px solid green'})
+        output_widget = widgets.Output(layout = {'border': '1px solid white'})
         output_widget.clear_output()
+       
+        with output_widget:
+            display(HTML('''
+                <style>
+                    .widget-dropdown { background-color: black !important; }
+                    .widget-dropdown .widget-label { color: olive !important; }
+                </style>
+            '''))
+
         basemap_ctrl = WidgetControl(widget = output_widget, position='topright')
         self.add_control(basemap_ctrl)
 
         dropdown = widgets.Dropdown(
             options = ["OpenStreetMap", "ESRI Imagery", "OpenTopoMap", "NatGeo World Map", "Light Canvas"], 
             value = None,
-            description = 'basemap',
-            )
+            description = 'Basemap',
+            style = {'description_width': 'initial', 'button_width': '100px', 'button_color': 'olive', 'description_color': 'olive', 'background-color': 'olive'}
+        )
 
+        icon_html = '<i class="fa fa-window-close" aria-hidden="true"></i>'
         close_button = widgets.ToggleButton(
             value = True,
             tooltip = "Toggle basemap selector",
-            icon = "fa-times",
+            description = 'Close',
+            icon = icon_html,
             button_style = "primary",
         )
-        close_button
+
+        close_button.style.button_color = "white"
+        close_button.style.font_weight = "bold"
+
+        close_button_icon = HTML(
+            '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">'
+            '<i class="fa fa-times"></i>'
+        )
 
         widget_menu = widgets.VBox([close_button, dropdown])
 
@@ -252,19 +273,19 @@ class Mapomatic(Map):
 
         def change_basemap(select):
             if select["new"] == "OpenStreetMap":
-                self.add_basemap(basemap= "OpenStreetMap")
+                self.add_basemap(basemap_name= "OpenStreetMap", url_template="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png")
             
             if select["new"] == "ESRI Imagery":
-                self.add_basemap(basemap= "Esri.WorldImagery")
+                self.add_basemap(basemap_name= "Esri.WorldImagery", url_template="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}")
             
             if select["new"] == "OpenTopoMap":
-                self.add_basemap(basemap= "OpenTopoMap")
+                self.add_basemap(basemap_name= "OpenTopoMap", url_template="https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png")
 
             if select["new"] == "NatGeo World Map":
-                self.add_basemap(basemap= "Esri.NatGeoWorldMap")
-
+                self.add_basemap(basemap_name= "Esri.NatGeoWorldMap", url_template="https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}")
+                
             if select["new"] == "Light Canvas":
-                self.add_basemap(basemap= "CartoDB.Positron")
+                self.add_basemap(basemap_name= "CartoDB.Positron", url_template="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png")
         
         dropdown.observe(change_basemap, "value")
 
