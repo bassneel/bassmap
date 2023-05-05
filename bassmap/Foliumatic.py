@@ -6,6 +6,8 @@ import json
 import folium
 import geopandas as gpd
 
+import folium
+
 class Foliumatic(folium.Map):
     
     def __init__(self):
@@ -14,25 +16,35 @@ class Foliumatic(folium.Map):
     def __init__(self, lat=0, lon=0, zoom_start=2):
         self.map = folium.Map(location=[lat, lon], zoom_start=zoom_start)
 
-    def add_tile_layer(self, tile_url='OpenStreetMap', tile_name=None):
-        if tile_name:
+    def add_tile_layers(self, tile_layers):
+        for tile_name, tile_url in tile_layers.items():
             folium.TileLayer(tiles=tile_url, name=tile_name).add_to(self.map)
-        else:
-            folium.TileLayer(tiles=tile_url).add_to(self.map)
 
         folium.LayerControl().add_to(self.map)
 
         return self.map
 
-    def add_basemap(self, basemap_name, url_template):
+    def add_basemap(self, basemap_name):
         """
-        Adds a basemap to the map using a URL template.
+        Adds a basemap to the map using a predefined URL template for XYZ tile services.
         
         Parameters:
         basemap_name (str): The name of the basemap to add.
-        url_template (str): The URL template to use for the new basemap layer. Must be 
-            a valid XYZ tile service.
         """
+        basemap_urls = {
+            'OpenStreetMap': 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+            'Mapbox Satellite': 'https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/{z}/{x}/{y}?access_token=<your-access-token>',
+            'Esri.WorldImagery': 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+            'OpenTopoMap': 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',
+            'Esri.NatGeoWorldMap': 'https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}',
+            'CartoDB.Positron': 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
+        }
+        
+        url_template = basemap_urls.get(basemap_name)
+        
+        if url_template is None:
+            raise ValueError(f'Unknown basemap name: {basemap_name}')
+        
         new_layer = folium.TileLayer(
             tiles=url_template,
             name=basemap_name,
