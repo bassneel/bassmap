@@ -305,7 +305,7 @@ class Mapomatic(Map):
 
 ### Landsat 8 Composites
 
-def get_truecolor(red_band, green_band, blue_band):
+def get_truecolor(red_band, green_band, blue_band, georef):
   
     """Generate a true-color composite image from red, green, and blue bands.
 
@@ -352,7 +352,7 @@ def get_truecolor(red_band, green_band, blue_band):
     from google.colab import files
     files.download('/tmp/true_color_comp.tif')
 
-def get_color_infrared(nir_band, red_band, green_band):
+def get_color_infrared(nir_band, red_band, green_band, georef):
   
     """
     Combines a near-infrared band, red band, and green band into a single 3-band image,
@@ -404,7 +404,7 @@ def get_color_infrared(nir_band, red_band, green_band):
     from google.colab import files
     files.download('/tmp/color_infrared_comp.tif')
 
-def get_false_color(swir2_band, swir_band, red_band):
+def get_false_color(swir2_band, swir_band, red_band, georef):
 
     """
     Combines a short wave infrared 2 band, a short wave infrared band, and red band into a single 3-band image,
@@ -456,7 +456,7 @@ def get_false_color(swir2_band, swir_band, red_band):
     from google.colab import files
     files.download('/tmp/false_color_comp.tif')
 
-def get_health_veg(nir_band, swir_band, blue_band):
+def get_health_veg(nir_band, swir_band, blue_band, georef):
 
     """
     Combines a near infrared band, a short wave infrared band, and blue band into a single 3-band image,
@@ -508,7 +508,7 @@ def get_health_veg(nir_band, swir_band, blue_band):
     from google.colab import files
     files.download('/tmp/healthy_veg_comp.tif')
 
-def get_NDMI(nir_band, swir_band):
+def get_NDMI(nir_band, swir_band, georef):
 
     """
     Calculates the Normalized Difference Moisture Index (NDMI) from Near Infrared (NIR) and Shortwave Infrared (SWIR) bands.
@@ -564,7 +564,7 @@ def get_NDMI(nir_band, swir_band):
     from google.colab import files
     files.download('/tmp/ndmi_composite.tif')
 
-def get_NDVI(red_band, nir_band):
+def get_NDVI(red_band, nir_band, georef):
 
     """
     Calculates the Normalized Difference Vegetation Index (NDVI) from Red and Shortwave Infrared (SWIR) bands.
