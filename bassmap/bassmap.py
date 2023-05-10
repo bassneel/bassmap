@@ -14,7 +14,6 @@ import rasterio
 import rasterio.plot
 from rasterio.plot import show
 import numpy as np
-from osgeo import gdal
 import matplotlib.pyplot as plt
 import base64
 import folium
@@ -330,6 +329,8 @@ def get_truecolor(red_band, green_band, blue_band):
         get_truecolor(red_band, green_band, blue_band)
     """
 
+    from osgeo import gdal
+
     # Combine the three bands into a single 3D array with 3 bands
     true_color = np.array([red_band, green_band, blue_band], dtype=np.uint16)
 
@@ -378,6 +379,8 @@ def get_color_infrared(nir_band, red_band, green_band):
         # Generate a color infrared composite image and download it
         get_color_infrared(nir_band, red_band, green_band)
     """
+
+    from osgeo import gdal
 
     # Combine the three bands into a single 3D array with 3 bands
     color_infrared = np.array([nir_band, red_band, green_band], dtype=np.uint16)
@@ -429,6 +432,8 @@ def get_false_color(swir2_band, swir_band, red_band):
         get_false_color(swir2_band, swir_band, red_band)
     """
 
+    from osgeo import gdal
+
     # Combine the three bands into a single 3D array with 3 bands
     false_color = np.array([swir2_band, swir_band, red_band], dtype=np.uint16)
 
@@ -479,6 +484,8 @@ def get_health_veg(nir_band, swir_band, blue_band):
         get_health_veg(nir_band, swir_band, blue_band)
     """
 
+    from osgeo import gdal
+
     # Combine the three bands into a single 3D array with 3 bands
     healthy_veg = np.array([nir_band, swir_band, blue_band], dtype=np.uint16)
 
@@ -528,6 +535,8 @@ def get_NDMI(nir_band, swir_band):
         # Generate an NDMI composite image and download it
         get_NDMI(nir_band, swir_band)
     """
+
+    from osgeo import gdal
 
     # Scale the input bands to the range of 0-255
     nir_band = (nir_band / 65535.0) * 255.0
@@ -582,6 +591,8 @@ def get_NDVI(red_band, nir_band):
         # Generate an NDVI composite image and download it
         get_NDVI(red_band, nir_band)
     """
+
+    from osgeo import gdal
 
     # Scale the input bands to the range of 0-255
     red_band = (red_band / 65535.0) * 255.0
