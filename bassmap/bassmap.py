@@ -22,7 +22,6 @@ from ipyleaflet import display
 import ipywidgets as widgets
 from ipyleaflet import WidgetControl
 from IPython.display import HTML
-import google.colab
 
 class Mapomatic(Map):
     
