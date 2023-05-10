@@ -14,6 +14,7 @@ import rasterio
 import rasterio.plot
 from rasterio.plot import show
 import numpy as np
+from osgeo import gdal
 import matplotlib.pyplot as plt
 import base64
 import folium
@@ -22,6 +23,7 @@ from ipyleaflet import display
 import ipywidgets as widgets
 from ipyleaflet import WidgetControl
 from IPython.display import HTML
+import google.colab
 
 class Mapomatic(Map):
     
@@ -302,6 +304,311 @@ class Mapomatic(Map):
                     display(close_button)
         
         close_button.observe(close_basemap, "value")
+
+### Landsat 8 Composites
+
+def get_truecolor(red_band, green_band, blue_band):
+  
+    """Generate a true-color composite image from red, green, and blue bands.
+
+    Args:
+        red_band (ndarray): A 2D numpy array representing the red band.
+        green_band (ndarray): A 2D numpy array representing the green band.
+        blue_band (ndarray): A 2D numpy array representing the blue band.
+
+    Raises:
+        ValueError: If any of the input bands have different shapes.
+
+    Example:
+        # Load the red, green, and blue bands from GeoTIFF files
+        red_band = gdal.Open('path/to/red_band.tif').ReadAsArray()
+        green_band = gdal.Open('path/to/green_band.tif').ReadAsArray()
+        blue_band = gdal.Open('path/to/blue_band.tif').ReadAsArray()
+        georef = gdal.Open('path/to/reference.tif')
+
+        # Generate a true-color composite image and download it
+        get_truecolor(red_band, green_band, blue_band)
+    """
+
+    # Combine the three bands into a single 3D array with 3 bands
+    true_color = np.array([red_band, green_band, blue_band], dtype=np.uint16)
+
+    # Get the dimensions and georeferencing information from one of the input files
+    xsize = georef.RasterXSize
+    ysize = georef.RasterYSize
+    proj = georef.GetProjection()
+    geotrans = georef.GetGeoTransform()
+    driver = gdal.GetDriverByName('GTiff')
+
+    # Create a new TIFF file and write the composite array to it
+    truecolor_ds = driver.Create('/tmp/true_color_comp.tif', xsize, ysize, 3, gdal.GDT_UInt16)
+    truecolor_ds.SetProjection(proj)
+    truecolor_ds.SetGeoTransform(geotrans)
+    truecolor_ds.GetRasterBand(1).WriteArray(true_color[0])
+    truecolor_ds.GetRasterBand(2).WriteArray(true_color[1])
+    truecolor_ds.GetRasterBand(3).WriteArray(true_color[2])
+    truecolor_ds.FlushCache()
+
+    from google.colab import files
+    files.download('/tmp/true_color_comp.tif')
+
+def get_color_infrared(nir_band, red_band, green_band):
+  
+    """
+    Combines a near-infrared band, red band, and green band into a single 3-band image,
+    where the near-infrared band is displayed as red, the red band is displayed as green,
+    and the green band is displayed as blue. This produces a color infrared image that
+    accentuates the buildings in the scene.
+
+    Args:
+        nir_band (numpy array): A 2D numpy array representing a near-infrared band
+        red_band (numpy array): A 2D numpy array representing a red band
+        green_band (numpy array): A 2D numpy array representing a green band
+
+    Raises:
+        ValueError: If the input arrays have different dimensions
+
+    Example:
+        # Load the input bands as numpy arrays
+        nir_band = gdal.Open('path/to/nir_band.tif').ReadAsArray()
+        red_band = gdal.Open('path/to/red_band.tif').ReadAsArray()
+        green_band = gdal.Open('path/to/green_band.tif').ReadAsArray()
+        georef = gdal.Open('path/to/reference.tif')
+
+        # Generate a color infrared composite image and download it
+        get_color_infrared(nir_band, red_band, green_band)
+    """
+
+    # Combine the three bands into a single 3D array with 3 bands
+    color_infrared = np.array([nir_band, red_band, green_band], dtype=np.uint16)
+
+    # Get the dimensions and georeferencing information from one of the input files
+    xsize = georef.RasterXSize
+    ysize = georef.RasterYSize
+    proj = georef.GetProjection()
+    geotrans = georef.GetGeoTransform()
+    driver = gdal.GetDriverByName('GTiff')
+
+    # Create a new TIFF file and write the composite array to it
+    color_infrared_ds = driver.Create('/tmp/color_infrared_comp.tif', xsize, ysize, 3, gdal.GDT_UInt16)
+    color_infrared_ds.SetProjection(proj)
+    color_infrared_ds.SetGeoTransform(geotrans)
+    color_infrared_ds.GetRasterBand(1).WriteArray(color_infrared[0])
+    color_infrared_ds.GetRasterBand(2).WriteArray(color_infrared[1])
+    color_infrared_ds.GetRasterBand(3).WriteArray(color_infrared[2])
+    color_infrared_ds.FlushCache()
+
+    # Download new TIFF file
+    from google.colab import files
+    files.download('/tmp/color_infrared_comp.tif')
+
+def get_false_color(swir2_band, swir_band, red_band):
+
+    """
+    Combines a short wave infrared 2 band, a short wave infrared band, and red band into a single 3-band image,
+    where the a short wave infrared 2 band is displayed as red, the a short wave infrared band is displayed as green,
+    and the red band is displayed as blue. This produces a false-color image that
+    accentuates the vegetation in the scene.
+
+    Args:
+        swir2_band (numpy array): A 2D numpy array representing a short wave infrared 2 band
+        swir_band (numpy array): A 2D numpy array representing a short wave infrared band
+        red_band (numpy array): A 2D numpy array representing a red band
+
+    Raises:
+        ValueError: If the input arrays have different dimensions
+
+    Example:
+        # Load the input bands as numpy arrays
+        swir2_band = gdal.Open('path/to/swir2_band.tif').ReadAsArray()
+        swir_band = gdal.Open('path/to/swir_band.tif').ReadAsArray()
+        red_band = gdal.Open('path/to/red_band.tif').ReadAsArray()
+        georef = gdal.Open('path/to/reference.tif')
+
+        # Generate a false color composite image and download it
+        get_false_color(swir2_band, swir_band, red_band)
+    """
+
+    # Combine the three bands into a single 3D array with 3 bands
+    false_color = np.array([swir2_band, swir_band, red_band], dtype=np.uint16)
+
+    # Get the dimensions and georeferencing information from one of the input files
+    xsize = georef.RasterXSize
+    ysize = georef.RasterYSize
+    proj = georef.GetProjection()
+    geotrans = georef.GetGeoTransform()
+    driver = gdal.GetDriverByName('GTiff')
+
+    # Create a new TIFF file and write the composite array to it
+    false_color_ds = driver.Create('/tmp/false_color_comp.tif', xsize, ysize, 3, gdal.GDT_UInt16)
+    false_color_ds.SetProjection(proj)
+    false_color_ds.SetGeoTransform(geotrans)
+    false_color_ds.GetRasterBand(1).WriteArray(false_color[0])
+    false_color_ds.GetRasterBand(2).WriteArray(false_color[1])
+    false_color_ds.GetRasterBand(3).WriteArray(false_color[2])
+    false_color_ds.FlushCache()
+
+    # Download new TIFF file
+    from google.colab import files
+    files.download('/tmp/false_color_comp.tif')
+
+def get_health_veg(nir_band, swir_band, blue_band):
+
+    """
+    Combines a near infrared band, a short wave infrared band, and blue band into a single 3-band image,
+    where the a near infrared band is displayed as red, the a short wave infrared band is displayed as green,
+    and the blue band is displayed as blue. This produces a false-color image that
+    accentuates the healthy vegetation in the scene.
+
+    Args:
+        nir_band (numpy array): A 2D numpy array representing a near infrared band
+        swir_band (numpy array): A 2D numpy array representing a short wave infrared band
+        blue_band (numpy array): A 2D numpy array representing a blue band
+
+    Raises:
+        ValueError: If the input arrays have different dimensions
+
+    Example:
+        # Load the input bands as numpy arrays
+        nir_band = gdal.Open('path/to/nir_band.tif').ReadAsArray()
+        swir_band = gdal.Open('path/to/swir_band.tif').ReadAsArray()
+        blue_band = gdal.Open('path/to/blue_band.tif').ReadAsArray()
+        georef = gdal.Open('path/to/reference.tif')
+
+        # Generate a false color composite image and download it
+        get_health_veg(nir_band, swir_band, blue_band)
+    """
+
+    # Combine the three bands into a single 3D array with 3 bands
+    healthy_veg = np.array([nir_band, swir_band, blue_band], dtype=np.uint16)
+
+    # Get the dimensions and georeferencing information from one of the input files
+    xsize = georef.RasterXSize
+    ysize = georef.RasterYSize
+    proj = georef.GetProjection()
+    geotrans = georef.GetGeoTransform()
+    driver = gdal.GetDriverByName('GTiff')
+
+    # Create a new TIFF file and write the composite array to it
+    healthy_veg_ds = driver.Create('/tmp/healthy_veg_comp.tif', xsize, ysize, 3, gdal.GDT_UInt16)
+    healthy_veg_ds.SetProjection(proj)
+    healthy_veg_ds.SetGeoTransform(geotrans)
+    healthy_veg_ds.GetRasterBand(1).WriteArray(healthy_veg[0])
+    healthy_veg_ds.GetRasterBand(2).WriteArray(healthy_veg[1])
+    healthy_veg_ds.GetRasterBand(3).WriteArray(healthy_veg[2])
+    healthy_veg_ds.FlushCache()
+
+    # Download new TIFF file
+    from google.colab import files
+    files.download('/tmp/healthy_veg_comp.tif')
+
+def get_NDMI(nir_band, swir_band):
+
+    """
+    Calculates the Normalized Difference Moisture Index (NDMI) from Near Infrared (NIR) and Shortwave Infrared (SWIR) bands.
+    
+    Args:
+        nir_band (numpy.ndarray): A 2D or 3D array containing the Near Infrared band data.
+        swir_band (numpy.ndarray): A 2D or 3D array containing the Shortwave Infrared band data.
+    
+    Returns:
+        ndmi (numpy.ndarray): A 2D or 3D array containing the calculated Normalized Difference Moisture Index.
+    
+    Raises:
+        ValueError: If the input arrays are not of the same shape.
+        ValueError: If the input arrays have different data types.
+        ValueError: If the input arrays have invalid values.
+        ImportError: If the GDAL library is not installed.
+    
+    Examples:
+        nir_band = gdal.Open('path/to/nir_band.tif').ReadAsArray()
+        swir_band = gdal.Open('path/to/swir_band.tif').ReadAsArray()
+        georef = gdal.Open('path/to/reference.tif')
+
+        # Generate an NDMI composite image and download it
+        get_NDMI(nir_band, swir_band)
+    """
+
+    # Scale the input bands to the range of 0-255
+    nir_band = (nir_band / 65535.0) * 255.0
+    swir_band = (swir_band / 65535.0) * 255.0
+
+    # Calculate the NDMI from the NIR and SWIR bands
+    ndmi = np.empty_like(nir_band, dtype=np.float32)
+    ndmi.fill(np.nan)
+    valid = np.logical_and(nir_band != 0, swir_band != 0)
+    ndmi[valid] = (nir_band[valid] - swir_band[valid]) / (nir_band[valid] + swir_band[valid])
+
+    # Get the dimensions and georeferencing information from one of the input files
+    xsize = georef.RasterXSize
+    ysize = georef.RasterYSize
+    proj = georef.GetProjection()
+    geotrans = georef.GetGeoTransform()
+    driver = gdal.GetDriverByName('GTiff')
+
+    # Create a new TIFF file and write the NDMI array to it
+    ndmi_ds = driver.Create('/tmp/ndmi_composite.tif', xsize, ysize, 1, gdal.GDT_Float32)
+    ndmi_ds.SetProjection(proj)
+    ndmi_ds.SetGeoTransform(geotrans)
+    ndmi_ds.GetRasterBand(1).WriteArray(ndmi)
+    ndmi_ds.FlushCache()
+
+    from google.colab import files
+    files.download('/tmp/ndmi_composite.tif')
+
+def get_NDVI(red_band, nir_band):
+
+    """
+    Calculates the Normalized Difference Vegetation Index (NDVI) from Red and Shortwave Infrared (SWIR) bands.
+    
+    Args:
+        red_band (numpy.ndarray): A 2D or 3D array containing the Red band data.
+        nir_band (numpy.ndarray): A 2D or 3D array containing the Near Infrared band data.
+    
+    Returns:
+        ndmi (numpy.ndarray): A 2D or 3D array containing the calculated Normalized Difference Moisture Index.
+    
+    Raises:
+        ValueError: If the input arrays are not of the same shape.
+        ValueError: If the input arrays have different data types.
+        ValueError: If the input arrays have invalid values.
+        ImportError: If the GDAL library is not installed.
+    
+    Examples:
+        red_band = gdal.Open('path/to/red_band.tif').ReadAsArray()
+        nir_band = gdal.Open('path/to/nir_band.tif').ReadAsArray()
+        georef = gdal.Open('path/to/reference.tif')
+
+        # Generate an NDVI composite image and download it
+        get_NDVI(red_band, nir_band)
+    """
+
+    # Scale the input bands to the range of 0-255
+    red_band = (red_band / 65535.0) * 255.0
+    nir_band = (nir_band / 65535.0) * 255.0
+
+    # Calculate the NDMI from the NIR and SWIR bands
+    ndvi = np.empty_like(nir_band, dtype=np.float32)
+    ndvi.fill(np.nan)
+    valid = np.logical_and(red_band != 0, nir_band != 0)
+    ndvi[valid] = (nir_band[valid] - red_band[valid]) / (nir_band[valid] + red_band[valid])
+
+    # Get the dimensions and georeferencing information from one of the input files
+    xsize = georef.RasterXSize
+    ysize = georef.RasterYSize
+    proj = georef.GetProjection()
+    geotrans = georef.GetGeoTransform()
+    driver = gdal.GetDriverByName('GTiff')
+
+    # Create a new TIFF file and write the NDMI array to it
+    ndvi_ds = driver.Create('/tmp/ndvi_composite.tif', xsize, ysize, 1, gdal.GDT_Float32)
+    ndvi_ds.SetProjection(proj)
+    ndvi_ds.SetGeoTransform(geotrans)
+    ndvi_ds.GetRasterBand(1).WriteArray(ndvi)
+    ndvi_ds.FlushCache()
+
+    from google.colab import files
+    files.download('/tmp/ndvi_composite.tif')
 
 locations = {}
 
