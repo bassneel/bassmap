@@ -1,4 +1,4 @@
  
-# bassmap module
+# BassMap module
 
 ::: bassmap.bassmap
