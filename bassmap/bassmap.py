@@ -305,6 +305,12 @@ class Mapomatic(Map):
 
 ### Landsat 8 Composites
 
+import tempfile
+import os
+import shutil
+
+tmp_dir = tempfile.TemporaryDirectory()
+
 def get_truecolor(red_band, green_band, blue_band, georef):
   
     """Generate a true-color composite image from red, green, and blue bands.
@@ -313,9 +319,16 @@ def get_truecolor(red_band, green_band, blue_band, georef):
         red_band (ndarray): A 2D numpy array representing the red band.
         green_band (ndarray): A 2D numpy array representing the green band.
         blue_band (ndarray): A 2D numpy array representing the blue band.
+        georef (osgeo.gdal.Dataset): A GDAL dataset containing georeferencing information for the input bands.
+
+    Returns:
+        str: The path to the created true color file.
 
     Raises:
-        ValueError: If any of the input bands have different shapes.
+        ValueError: If the input arrays are not of the same shape.
+        ValueError: If the input arrays have different data types.
+        ValueError: If the input arrays have invalid values.
+        ImportError: If the GDAL library is not installed.
 
     Example:
         # Load the red, green, and blue bands from GeoTIFF files
@@ -325,7 +338,8 @@ def get_truecolor(red_band, green_band, blue_band, georef):
         georef = gdal.Open('path/to/reference.tif')
 
         # Generate a true-color composite image and download it
-        get_truecolor(red_band, green_band, blue_band)
+        true_color_path = true_color_path(red_band, green_band, blue_band, georef)
+        # Download the file at true_color_path
     """
 
     from osgeo import gdal
@@ -340,17 +354,22 @@ def get_truecolor(red_band, green_band, blue_band, georef):
     geotrans = georef.GetGeoTransform()
     driver = gdal.GetDriverByName('GTiff')
 
-    # Create a new TIFF file and write the composite array to it
-    truecolor_ds = driver.Create('/tmp/true_color_comp.tif', xsize, ysize, 3, gdal.GDT_UInt16)
-    truecolor_ds.SetProjection(proj)
-    truecolor_ds.SetGeoTransform(geotrans)
-    truecolor_ds.GetRasterBand(1).WriteArray(true_color[0])
-    truecolor_ds.GetRasterBand(2).WriteArray(true_color[1])
-    truecolor_ds.GetRasterBand(3).WriteArray(true_color[2])
-    truecolor_ds.FlushCache()
+    # Create a new TIFF file and write the NDVI array to it
+    true_color_path = os.path.join(tmp_dir.name, 'true_color_comp.tif')
+    true_color_ds = driver.Create(true_color_path, xsize, ysize, 3, gdal.GDT_Float32)
+    
+    if true_color_ds is not None:
+        true_color_ds.SetProjection(proj)
+        true_color_ds.SetGeoTransform(geotrans)
+        true_color_ds.GetRasterBand(1).WriteArray(true_color[0])
+        true_color_ds.GetRasterBand(2).WriteArray(true_color[1])
+        true_color_ds.GetRasterBand(3).WriteArray(true_color[2])
+        true_color_ds.FlushCache()
 
-    from google.colab import files
-    files.download('/tmp/true_color_comp.tif')
+    else:
+        raise Exception("Failed to create TIFF file")
+        
+    return true_color_path
 
 def get_color_infrared(nir_band, red_band, green_band, georef):
   
@@ -364,9 +383,16 @@ def get_color_infrared(nir_band, red_band, green_band, georef):
         nir_band (numpy array): A 2D numpy array representing a near-infrared band
         red_band (numpy array): A 2D numpy array representing a red band
         green_band (numpy array): A 2D numpy array representing a green band
+        georef (osgeo.gdal.Dataset): A GDAL dataset containing georeferencing information for the input bands.
 
+    Returns:
+        str: The path to the created color infrared file.
+                
     Raises:
-        ValueError: If the input arrays have different dimensions
+        ValueError: If the input arrays are not of the same shape.
+        ValueError: If the input arrays have different data types.
+        ValueError: If the input arrays have invalid values.
+        ImportError: If the GDAL library is not installed.
 
     Example:
         # Load the input bands as numpy arrays
@@ -376,7 +402,8 @@ def get_color_infrared(nir_band, red_band, green_band, georef):
         georef = gdal.Open('path/to/reference.tif')
 
         # Generate a color infrared composite image and download it
-        get_color_infrared(nir_band, red_band, green_band)
+        color_infrared_path = get_color_infrared(nir_band, red_band, green_band, georef)
+        # Download the file at color_infrared_path
     """
 
     from osgeo import gdal
@@ -391,18 +418,22 @@ def get_color_infrared(nir_band, red_band, green_band, georef):
     geotrans = georef.GetGeoTransform()
     driver = gdal.GetDriverByName('GTiff')
 
-    # Create a new TIFF file and write the composite array to it
-    color_infrared_ds = driver.Create('/tmp/color_infrared_comp.tif', xsize, ysize, 3, gdal.GDT_UInt16)
-    color_infrared_ds.SetProjection(proj)
-    color_infrared_ds.SetGeoTransform(geotrans)
-    color_infrared_ds.GetRasterBand(1).WriteArray(color_infrared[0])
-    color_infrared_ds.GetRasterBand(2).WriteArray(color_infrared[1])
-    color_infrared_ds.GetRasterBand(3).WriteArray(color_infrared[2])
-    color_infrared_ds.FlushCache()
+    # Create a new TIFF file and write the NDVI array to it
+    color_infrared_path = os.path.join(tmp_dir.name, 'color_infrared_comp.tif')
+    color_infrared_ds = driver.Create(color_infrared_path, xsize, ysize, 3, gdal.GDT_Float32)
+    
+    if color_infrared_ds is not None:
+        color_infrared_ds.SetProjection(proj)
+        color_infrared_ds.SetGeoTransform(geotrans)
+        color_infrared_ds.GetRasterBand(1).WriteArray(color_infrared[0])
+        color_infrared_ds.GetRasterBand(2).WriteArray(color_infrared[1])
+        color_infrared_ds.GetRasterBand(3).WriteArray(color_infrared[2])
+        color_infrared_ds.FlushCache()
 
-    # Download new TIFF file
-    from google.colab import files
-    files.download('/tmp/color_infrared_comp.tif')
+    else:
+        raise Exception("Failed to create TIFF file")
+        
+    return color_infrared_path
 
 def get_false_color(swir2_band, swir_band, red_band, georef):
 
@@ -416,9 +447,16 @@ def get_false_color(swir2_band, swir_band, red_band, georef):
         swir2_band (numpy array): A 2D numpy array representing a short wave infrared 2 band
         swir_band (numpy array): A 2D numpy array representing a short wave infrared band
         red_band (numpy array): A 2D numpy array representing a red band
+        georef (osgeo.gdal.Dataset): A GDAL dataset containing georeferencing information for the input bands.
+
+    Returns:
+        str: The path to the created false-color file.
 
     Raises:
-        ValueError: If the input arrays have different dimensions
+        ValueError: If the input arrays are not of the same shape.
+        ValueError: If the input arrays have different data types.
+        ValueError: If the input arrays have invalid values.
+        ImportError: If the GDAL library is not installed.
 
     Example:
         # Load the input bands as numpy arrays
@@ -427,8 +465,9 @@ def get_false_color(swir2_band, swir_band, red_band, georef):
         red_band = gdal.Open('path/to/red_band.tif').ReadAsArray()
         georef = gdal.Open('path/to/reference.tif')
 
-        # Generate a false color composite image and download it
-        get_false_color(swir2_band, swir_band, red_band)
+        # Generate a false-color composite image and download it
+        false_color_path = false_color_path(swir2_band, swir_band, red_band, georef)
+        # Download the file at false_color_path
     """
 
     from osgeo import gdal
@@ -443,18 +482,22 @@ def get_false_color(swir2_band, swir_band, red_band, georef):
     geotrans = georef.GetGeoTransform()
     driver = gdal.GetDriverByName('GTiff')
 
-    # Create a new TIFF file and write the composite array to it
-    false_color_ds = driver.Create('/tmp/false_color_comp.tif', xsize, ysize, 3, gdal.GDT_UInt16)
-    false_color_ds.SetProjection(proj)
-    false_color_ds.SetGeoTransform(geotrans)
-    false_color_ds.GetRasterBand(1).WriteArray(false_color[0])
-    false_color_ds.GetRasterBand(2).WriteArray(false_color[1])
-    false_color_ds.GetRasterBand(3).WriteArray(false_color[2])
-    false_color_ds.FlushCache()
+    # Create a new TIFF file and write the NDVI array to it
+    false_color_path = os.path.join(tmp_dir.name, 'false_color_comp.tif')
+    false_color_ds = driver.Create(false_color_path, xsize, ysize, 3, gdal.GDT_Float32)
+    
+    if false_color_ds is not None:
+        false_color_ds.SetProjection(proj)
+        false_color_ds.SetGeoTransform(geotrans)
+        false_color_ds.GetRasterBand(1).WriteArray(false_color[0])
+        false_color_ds.GetRasterBand(2).WriteArray(false_color[1])
+        false_color_ds.GetRasterBand(3).WriteArray(false_color[2])
+        false_color_ds.FlushCache()
 
-    # Download new TIFF file
-    from google.colab import files
-    files.download('/tmp/false_color_comp.tif')
+    else:
+        raise Exception("Failed to create TIFF file")
+        
+    return false_color_path
 
 def get_health_veg(nir_band, swir_band, blue_band, georef):
 
@@ -468,9 +511,16 @@ def get_health_veg(nir_band, swir_band, blue_band, georef):
         nir_band (numpy array): A 2D numpy array representing a near infrared band
         swir_band (numpy array): A 2D numpy array representing a short wave infrared band
         blue_band (numpy array): A 2D numpy array representing a blue band
+        georef (osgeo.gdal.Dataset): A GDAL dataset containing georeferencing information for the input bands.
+
+    Returns:
+        str: The path to the created healthy vegetation file.
 
     Raises:
-        ValueError: If the input arrays have different dimensions
+        ValueError: If the input arrays are not of the same shape.
+        ValueError: If the input arrays have different data types.
+        ValueError: If the input arrays have invalid values.
+        ImportError: If the GDAL library is not installed.
 
     Example:
         # Load the input bands as numpy arrays
@@ -479,8 +529,9 @@ def get_health_veg(nir_band, swir_band, blue_band, georef):
         blue_band = gdal.Open('path/to/blue_band.tif').ReadAsArray()
         georef = gdal.Open('path/to/reference.tif')
 
-        # Generate a false color composite image and download it
-        get_health_veg(nir_band, swir_band, blue_band)
+        # Generate a healthy vegetation composite image and download it
+        healthy_veg_path = get_health_veg(nir_band, swir_band, blue_band, georef)
+        # Download the file at healthy_veg_path
     """
 
     from osgeo import gdal
@@ -497,18 +548,25 @@ def get_health_veg(nir_band, swir_band, blue_band, georef):
 
     # Create a new TIFF file and write the composite array to it
     healthy_veg_ds = driver.Create('/tmp/healthy_veg_comp.tif', xsize, ysize, 3, gdal.GDT_UInt16)
-    healthy_veg_ds.SetProjection(proj)
-    healthy_veg_ds.SetGeoTransform(geotrans)
-    healthy_veg_ds.GetRasterBand(1).WriteArray(healthy_veg[0])
-    healthy_veg_ds.GetRasterBand(2).WriteArray(healthy_veg[1])
-    healthy_veg_ds.GetRasterBand(3).WriteArray(healthy_veg[2])
-    healthy_veg_ds.FlushCache()
+        
+    # Create a new TIFF file and write the NDVI array to it
+    healthy_veg_path = os.path.join(tmp_dir.name, 'healthy_veg_comp.tif')
+    healthy_veg_ds = driver.Create(healthy_veg_path, xsize, ysize, 3, gdal.GDT_Float32)
+    
+    if healthy_veg_ds is not None:
+        healthy_veg_ds.SetProjection(proj)
+        healthy_veg_ds.SetGeoTransform(geotrans)
+        healthy_veg_ds.GetRasterBand(1).WriteArray(healthy_veg[0])
+        healthy_veg_ds.GetRasterBand(2).WriteArray(healthy_veg[1])
+        healthy_veg_ds.GetRasterBand(3).WriteArray(healthy_veg[2])
+        healthy_veg_ds.FlushCache()
 
-    # Download new TIFF file
-    from google.colab import files
-    files.download('/tmp/healthy_veg_comp.tif')
+    else:
+        raise Exception("Failed to create TIFF file")
+        
+    return healthy_veg_path
 
-def get_NDMI(nir_band, swir_band, georef):
+def get_ndmi(nir_band, swir_band, georef):
 
     """
     Calculates the Normalized Difference Moisture Index (NDMI) from Near Infrared (NIR) and Shortwave Infrared (SWIR) bands.
@@ -516,9 +574,10 @@ def get_NDMI(nir_band, swir_band, georef):
     Args:
         nir_band (numpy.ndarray): A 2D or 3D array containing the Near Infrared band data.
         swir_band (numpy.ndarray): A 2D or 3D array containing the Shortwave Infrared band data.
+        georef (osgeo.gdal.Dataset): A GDAL dataset containing georeferencing information for the input bands.
     
     Returns:
-        ndmi (numpy.ndarray): A 2D or 3D array containing the calculated Normalized Difference Moisture Index.
+        str: The path to the created NDMI file.
     
     Raises:
         ValueError: If the input arrays are not of the same shape.
@@ -532,7 +591,8 @@ def get_NDMI(nir_band, swir_band, georef):
         georef = gdal.Open('path/to/reference.tif')
 
         # Generate an NDMI composite image and download it
-        get_NDMI(nir_band, swir_band)
+        ndmi_path = get_NDMI(red_band, nir_band, georef)
+        # Download the file at ndvi_path
     """
 
     from osgeo import gdal
@@ -554,50 +614,55 @@ def get_NDMI(nir_band, swir_band, georef):
     geotrans = georef.GetGeoTransform()
     driver = gdal.GetDriverByName('GTiff')
 
-    # Create a new TIFF file and write the NDMI array to it
-    ndmi_ds = driver.Create('/tmp/ndmi_composite.tif', xsize, ysize, 1, gdal.GDT_Float32)
-    ndmi_ds.SetProjection(proj)
-    ndmi_ds.SetGeoTransform(geotrans)
-    ndmi_ds.GetRasterBand(1).WriteArray(ndmi)
-    ndmi_ds.FlushCache()
-
-    from google.colab import files
-    files.download('/tmp/ndmi_composite.tif')
+    # Create a new TIFF file and write the NDVI array to it
+    ndmi_path = os.path.join(tmp_dir.name, 'ndmi_composite.tif')
+    ndmi_ds = driver.Create(ndmi_path, xsize, ysize, 1, gdal.GDT_Float32)
+    
+    if ndmi_ds is not None:
+        ndmi_ds.SetProjection(proj)
+        ndmi_ds.SetGeoTransform(geotrans)
+        ndmi_ds.GetRasterBand(1).WriteArray(ndmi)
+        ndmi_ds.FlushCache()
+    else:
+        raise Exception("Failed to create TIFF file")
+        
+    return ndmi_path
 
 def get_NDVI(red_band, nir_band, georef):
-
     """
-    Calculates the Normalized Difference Vegetation Index (NDVI) from Red and Shortwave Infrared (SWIR) bands.
-    
+    Calculates the Normalized Difference Vegetation Index (NDVI) from Red and Near Infrared (NIR) bands.
+
     Args:
         red_band (numpy.ndarray): A 2D or 3D array containing the Red band data.
         nir_band (numpy.ndarray): A 2D or 3D array containing the Near Infrared band data.
-    
+        georef (osgeo.gdal.Dataset): A GDAL dataset containing georeferencing information for the input bands.
+
     Returns:
-        ndmi (numpy.ndarray): A 2D or 3D array containing the calculated Normalized Difference Moisture Index.
-    
+        str: The path to the created NDVI file.
+
     Raises:
         ValueError: If the input arrays are not of the same shape.
         ValueError: If the input arrays have different data types.
         ValueError: If the input arrays have invalid values.
         ImportError: If the GDAL library is not installed.
-    
+
     Examples:
         red_band = gdal.Open('path/to/red_band.tif').ReadAsArray()
         nir_band = gdal.Open('path/to/nir_band.tif').ReadAsArray()
         georef = gdal.Open('path/to/reference.tif')
 
         # Generate an NDVI composite image and download it
-        get_NDVI(red_band, nir_band)
+        ndvi_path = get_NDVI(red_band, nir_band, georef)
+        # Download the file at ndvi_path
     """
 
     from osgeo import gdal
-
+    
     # Scale the input bands to the range of 0-255
     red_band = (red_band / 65535.0) * 255.0
     nir_band = (nir_band / 65535.0) * 255.0
 
-    # Calculate the NDMI from the NIR and SWIR bands
+    # Calculate the NDVI from the NIR and Red bands
     ndvi = np.empty_like(nir_band, dtype=np.float32)
     ndvi.fill(np.nan)
     valid = np.logical_and(red_band != 0, nir_band != 0)
@@ -610,15 +675,49 @@ def get_NDVI(red_band, nir_band, georef):
     geotrans = georef.GetGeoTransform()
     driver = gdal.GetDriverByName('GTiff')
 
-    # Create a new TIFF file and write the NDMI array to it
-    ndvi_ds = driver.Create('/tmp/ndvi_composite.tif', xsize, ysize, 1, gdal.GDT_Float32)
-    ndvi_ds.SetProjection(proj)
-    ndvi_ds.SetGeoTransform(geotrans)
-    ndvi_ds.GetRasterBand(1).WriteArray(ndvi)
-    ndvi_ds.FlushCache()
+    # Create a new TIFF file and write the NDVI array to it
+    ndvi_path = os.path.join(tmp_dir.name, 'ndvi_composite.tif')
+    ndvi_ds = driver.Create(ndvi_path, xsize, ysize, 1, gdal.GDT_Float32)
+    
+    if ndvi_ds is not None:
+        ndvi_ds.SetProjection(proj)
+        ndvi_ds.SetGeoTransform(geotrans)
+        ndvi_ds.GetRasterBand(1).WriteArray(ndvi)
+        ndvi_ds.FlushCache()
+    else:
+        raise Exception("Failed to create TIFF file")
+        
+    return ndvi_path
 
-    from google.colab import files
-    files.download('/tmp/ndvi_composite.tif')
+def display_ndmi(ndmi_path):
+    import os.path
+    from localtileserver import get_leaflet_tile_layer, TileClient
+    from bassmap import Mapomatic
+
+    if not os.path.exists(ndmi_path):
+        raise ValueError(f"The file {ndmi_path} does not exist. Please run the get_ndmi function first.")
+    
+    client = TileClient(ndmi_path)
+    t = get_leaflet_tile_layer(client)
+
+    m = Mapomatic(center=client.center(), zoom=client.default_zoom)
+    m.add_layer(t)
+    m
+
+def display_ndvi(ndvi_path):
+    import os.path
+    from localtileserver import get_leaflet_tile_layer, TileClient
+    from bassmap import Mapomatic
+
+    if not os.path.exists(ndvi_path):
+        raise ValueError(f"The file {ndvi_path} does not exist. Please run the get_ndvi function first.")
+
+    client = TileClient(ndvi_path)
+    t = get_leaflet_tile_layer(client)
+
+    m = Mapomatic(center=client.center(), zoom=client.default_zoom)
+    m.add_layer(t)
+    m
 
 locations = {}
 
