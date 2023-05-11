@@ -50,7 +50,7 @@ nav:
     - Report Issues: https://github.com/bassneel/bassmap/issues
     - Examples:
           - examples/Introduction.ipynb
-          - examples/GeoTIFF_Functions.ipynb
+          - examples/Landsat_8_Tools.ipynb
           - examples/Mapomatic.ipynb
           - examples/Foliumatic.ipynb
           - examples/Select_Basemap.ipynb
