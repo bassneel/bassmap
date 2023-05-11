@@ -49,7 +49,6 @@ nav:
     - Changelog: changelog.md
     - Report Issues: https://github.com/bassneel/bassmap/issues
     - Examples:
-          - examples/Introduction.ipynb
           - examples/Landsat_8_Tools.ipynb
           - examples/Mapomatic.ipynb
           - examples/Foliumatic.ipynb
