@@ -689,6 +689,34 @@ def get_NDVI(red_band, nir_band, georef):
         
     return ndvi_path
 
+
+def csv_to_points(in_csv):
+
+    df = pd.read_csv(in_csv)
+
+    geometry = [Point(xy) for xy in zip(df['longitude'], df['latitude'])]
+    gdf = gpd.GeoDataFrame(df, geometry=geometry)
+    gdf.to_file('csv_points.shp', driver='ESRI Shapefile')
+
+def add_marker_cluster(in_csv):
+
+    df = pd.read_csv(in_csv)
+
+    geometry = [Point(xy) for xy in zip(df['longitude'], df['latitude'])]
+    gdf = gpd.GeoDataFrame(df, geometry=geometry)
+    gdf.to_file('marker_cluster.shp', driver='ESRI Shapefile')
+
+    colors = {}
+    for i, name in enumerate(gdf['name']):
+        colors[name] = f"#{i+1:02x}0000"
+
+    style = {'fillOpacity': 0.7, 'weight': 1, 'color': 'black'}
+    m = Mapomatic(center=[0, 0], zoom=2)
+    m.add_shp('marker_cluster.shp')
+
+    from IPython.display import display
+    display(m)
+
 locations = {}
 
 def generate_input_points():
