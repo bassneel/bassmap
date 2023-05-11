@@ -2,13 +2,14 @@
 
 [![image](https://img.shields.io/pypi/v/bassmap.svg)](https://pypi.python.org/pypi/bassmap)
 [![LinkedIn Badge](https://img.shields.io/badge/My-LinkedIn-blue)](https://www.linkedin.com/in/bassneel)
-![logo](https://imgur.com/MjQBsCA)
+[![YouTube](https://img.shields.io/badge/YouTube-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white)](https://www.youtube.com/channel/UCT8zQZMTdzOm3u0Ojq0piRg)
 
-**BassMap is an intuitive Python Package that allows the user to display a variety of features on an iPyLeaflet and Folium map display. In addition the Landsat 8 Tools allows the user to create a variety of multispectral composites using local GeoTIFFs from Landsat 8 spectral bands**
+[![logo](https://imgur.com/MjQBsCA)](https://github.com/bassneel/basspublicfiles/blob/main/bassmap_logo.png)
+
+**BassMap is an intuitive Python Package that allows the user to display a variety of features on an iPyLeaflet and Folium map display. In addition the Landsat 8 Tools allows the user to create a variety of multispectral composites using local GeoTIFFs from Landsat 8 spectral bands. Try out the Landsat 8 Tools on [Streamlit](https://bassmap.streamlit.app/)!**
 
 - [GitHub](https://github.com/bassneel/bassmap)
 - [Documentation](https://bassneel.github.io/bassmap)
-- [Streamlit](https://bassmap.streamlit.app/)
 
 -   Free software: MIT license
 -   Documentation: https://bassneel.github.io/bassmap
