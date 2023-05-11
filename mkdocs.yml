@@ -53,6 +53,7 @@ nav:
           - examples/Mapomatic.ipynb
           - examples/Foliumatic.ipynb
           - examples/Select_Basemap.ipynb
+          - examples/GEOG_510_Final.ipynb
     - API Reference:
           - bassmap module: bassmap.md
           - Foliumatic module: Foliumatic.md
