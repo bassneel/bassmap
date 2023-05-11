@@ -1,0 +1,3 @@
+# Foliumatic module
+
+::: bassmap.Foliumatic

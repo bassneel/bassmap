@@ -1,0 +1,3305 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://bassneel.github.io/bassmap/bassmap/">
+      
+      
+        <link rel="prev" href="../examples/Foliumatic/">
+      
+      
+        <link rel="next" href="../Foliumatic/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.11">
+    
+    
+      
+        <title>bassmap module - bassmap</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.85bb2934.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.a6bdf11c.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="preference" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#bassmap-module" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="bassmap" class="md-header__button md-logo" aria-label="bassmap" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            bassmap
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              bassmap module
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/bassneel/bassmap" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="bassmap" class="md-nav__button md-logo" aria-label="bassmap" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    bassmap
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/bassneel/bassmap" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        Installation
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../usage/" class="md-nav__link">
+        Usage
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing/" class="md-nav__link">
+        Contributing
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../changelog/" class="md-nav__link">
+        Changelog
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/bassneel/bassmap/issues" class="md-nav__link">
+        Report Issues
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+          Examples
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Examples
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/Landsat_8_Tools/" class="md-nav__link">
+        Landsat 8 Tools
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/Mapomatic/" class="md-nav__link">
+        Mapomatic
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/Foliumatic/" class="md-nav__link">
+        Foliumatic
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/Select_Basemap.ipynb" class="md-nav__link">
+        None
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+          API Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          API Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          bassmap module
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        bassmap module
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#bassmap.bassmap" class="md-nav__link">
+    bassmap.bassmap
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bassmap.bassmap.Mapomatic" class="md-nav__link">
+    Mapomatic
+  </a>
+  
+    <nav class="md-nav" aria-label="Mapomatic">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bassmap.bassmap.Mapomatic.add_basemap" class="md-nav__link">
+    add_basemap()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bassmap.bassmap.Mapomatic.add_fullscreen_control" class="md-nav__link">
+    add_fullscreen_control()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bassmap.bassmap.Mapomatic.add_geojson" class="md-nav__link">
+    add_geojson()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bassmap.bassmap.Mapomatic.add_layers_control" class="md-nav__link">
+    add_layers_control()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bassmap.bassmap.Mapomatic.add_raster" class="md-nav__link">
+    add_raster()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bassmap.bassmap.Mapomatic.add_shp" class="md-nav__link">
+    add_shp()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bassmap.bassmap.Mapomatic.add_tile_layer" class="md-nav__link">
+    add_tile_layer()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bassmap.bassmap.Mapomatic.add_vector" class="md-nav__link">
+    add_vector()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bassmap.bassmap.Mapomatic.select_basemap" class="md-nav__link">
+    select_basemap()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bassmap.bassmap.generate_input_points" class="md-nav__link">
+    generate_input_points()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bassmap.bassmap.get_NDVI" class="md-nav__link">
+    get_NDVI()
+  </a>
+  
+    <nav class="md-nav" aria-label="get_NDVI()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bassmap.bassmap.get_NDVI--generate-an-ndvi-composite-image-and-download-it" class="md-nav__link">
+    Generate an NDVI composite image and download it
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bassmap.bassmap.get_NDVI--download-the-file-at-ndvi_path" class="md-nav__link">
+    Download the file at ndvi_path
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bassmap.bassmap.get_color_infrared" class="md-nav__link">
+    get_color_infrared()
+  </a>
+  
+    <nav class="md-nav" aria-label="get_color_infrared()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bassmap.bassmap.get_color_infrared--load-the-input-bands-as-numpy-arrays" class="md-nav__link">
+    Load the input bands as numpy arrays
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bassmap.bassmap.get_color_infrared--generate-a-color-infrared-composite-image-and-download-it" class="md-nav__link">
+    Generate a color infrared composite image and download it
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bassmap.bassmap.get_color_infrared--download-the-file-at-color_infrared_path" class="md-nav__link">
+    Download the file at color_infrared_path
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bassmap.bassmap.get_false_color" class="md-nav__link">
+    get_false_color()
+  </a>
+  
+    <nav class="md-nav" aria-label="get_false_color()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bassmap.bassmap.get_false_color--load-the-input-bands-as-numpy-arrays" class="md-nav__link">
+    Load the input bands as numpy arrays
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bassmap.bassmap.get_false_color--generate-a-false-color-composite-image-and-download-it" class="md-nav__link">
+    Generate a false-color composite image and download it
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bassmap.bassmap.get_false_color--download-the-file-at-false_color_path" class="md-nav__link">
+    Download the file at false_color_path
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bassmap.bassmap.get_health_veg" class="md-nav__link">
+    get_health_veg()
+  </a>
+  
+    <nav class="md-nav" aria-label="get_health_veg()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bassmap.bassmap.get_health_veg--load-the-input-bands-as-numpy-arrays" class="md-nav__link">
+    Load the input bands as numpy arrays
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bassmap.bassmap.get_health_veg--generate-a-healthy-vegetation-composite-image-and-download-it" class="md-nav__link">
+    Generate a healthy vegetation composite image and download it
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bassmap.bassmap.get_health_veg--download-the-file-at-healthy_veg_path" class="md-nav__link">
+    Download the file at healthy_veg_path
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bassmap.bassmap.get_ndmi" class="md-nav__link">
+    get_ndmi()
+  </a>
+  
+    <nav class="md-nav" aria-label="get_ndmi()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bassmap.bassmap.get_ndmi--generate-an-ndmi-composite-image-and-download-it" class="md-nav__link">
+    Generate an NDMI composite image and download it
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bassmap.bassmap.get_ndmi--download-the-file-at-ndvi_path" class="md-nav__link">
+    Download the file at ndvi_path
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bassmap.bassmap.get_truecolor" class="md-nav__link">
+    get_truecolor()
+  </a>
+  
+    <nav class="md-nav" aria-label="get_truecolor()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bassmap.bassmap.get_truecolor--load-the-red-green-and-blue-bands-from-geotiff-files" class="md-nav__link">
+    Load the red, green, and blue bands from GeoTIFF files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bassmap.bassmap.get_truecolor--generate-a-true-color-composite-image-and-download-it" class="md-nav__link">
+    Generate a true-color composite image and download it
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bassmap.bassmap.get_truecolor--download-the-file-at-true_color_path" class="md-nav__link">
+    Download the file at true_color_path
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Foliumatic/" class="md-nav__link">
+        Foliumatic module
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#bassmap.bassmap" class="md-nav__link">
+    bassmap.bassmap
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bassmap.bassmap.Mapomatic" class="md-nav__link">
+    Mapomatic
+  </a>
+  
+    <nav class="md-nav" aria-label="Mapomatic">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bassmap.bassmap.Mapomatic.add_basemap" class="md-nav__link">
+    add_basemap()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bassmap.bassmap.Mapomatic.add_fullscreen_control" class="md-nav__link">
+    add_fullscreen_control()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bassmap.bassmap.Mapomatic.add_geojson" class="md-nav__link">
+    add_geojson()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bassmap.bassmap.Mapomatic.add_layers_control" class="md-nav__link">
+    add_layers_control()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bassmap.bassmap.Mapomatic.add_raster" class="md-nav__link">
+    add_raster()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bassmap.bassmap.Mapomatic.add_shp" class="md-nav__link">
+    add_shp()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bassmap.bassmap.Mapomatic.add_tile_layer" class="md-nav__link">
+    add_tile_layer()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bassmap.bassmap.Mapomatic.add_vector" class="md-nav__link">
+    add_vector()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bassmap.bassmap.Mapomatic.select_basemap" class="md-nav__link">
+    select_basemap()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bassmap.bassmap.generate_input_points" class="md-nav__link">
+    generate_input_points()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bassmap.bassmap.get_NDVI" class="md-nav__link">
+    get_NDVI()
+  </a>
+  
+    <nav class="md-nav" aria-label="get_NDVI()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bassmap.bassmap.get_NDVI--generate-an-ndvi-composite-image-and-download-it" class="md-nav__link">
+    Generate an NDVI composite image and download it
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bassmap.bassmap.get_NDVI--download-the-file-at-ndvi_path" class="md-nav__link">
+    Download the file at ndvi_path
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bassmap.bassmap.get_color_infrared" class="md-nav__link">
+    get_color_infrared()
+  </a>
+  
+    <nav class="md-nav" aria-label="get_color_infrared()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bassmap.bassmap.get_color_infrared--load-the-input-bands-as-numpy-arrays" class="md-nav__link">
+    Load the input bands as numpy arrays
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bassmap.bassmap.get_color_infrared--generate-a-color-infrared-composite-image-and-download-it" class="md-nav__link">
+    Generate a color infrared composite image and download it
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bassmap.bassmap.get_color_infrared--download-the-file-at-color_infrared_path" class="md-nav__link">
+    Download the file at color_infrared_path
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bassmap.bassmap.get_false_color" class="md-nav__link">
+    get_false_color()
+  </a>
+  
+    <nav class="md-nav" aria-label="get_false_color()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bassmap.bassmap.get_false_color--load-the-input-bands-as-numpy-arrays" class="md-nav__link">
+    Load the input bands as numpy arrays
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bassmap.bassmap.get_false_color--generate-a-false-color-composite-image-and-download-it" class="md-nav__link">
+    Generate a false-color composite image and download it
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bassmap.bassmap.get_false_color--download-the-file-at-false_color_path" class="md-nav__link">
+    Download the file at false_color_path
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bassmap.bassmap.get_health_veg" class="md-nav__link">
+    get_health_veg()
+  </a>
+  
+    <nav class="md-nav" aria-label="get_health_veg()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bassmap.bassmap.get_health_veg--load-the-input-bands-as-numpy-arrays" class="md-nav__link">
+    Load the input bands as numpy arrays
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bassmap.bassmap.get_health_veg--generate-a-healthy-vegetation-composite-image-and-download-it" class="md-nav__link">
+    Generate a healthy vegetation composite image and download it
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bassmap.bassmap.get_health_veg--download-the-file-at-healthy_veg_path" class="md-nav__link">
+    Download the file at healthy_veg_path
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bassmap.bassmap.get_ndmi" class="md-nav__link">
+    get_ndmi()
+  </a>
+  
+    <nav class="md-nav" aria-label="get_ndmi()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bassmap.bassmap.get_ndmi--generate-an-ndmi-composite-image-and-download-it" class="md-nav__link">
+    Generate an NDMI composite image and download it
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bassmap.bassmap.get_ndmi--download-the-file-at-ndvi_path" class="md-nav__link">
+    Download the file at ndvi_path
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bassmap.bassmap.get_truecolor" class="md-nav__link">
+    get_truecolor()
+  </a>
+  
+    <nav class="md-nav" aria-label="get_truecolor()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bassmap.bassmap.get_truecolor--load-the-red-green-and-blue-bands-from-geotiff-files" class="md-nav__link">
+    Load the red, green, and blue bands from GeoTIFF files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bassmap.bassmap.get_truecolor--generate-a-true-color-composite-image-and-download-it" class="md-nav__link">
+    Generate a true-color composite image and download it
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bassmap.bassmap.get_truecolor--download-the-file-at-true_color_path" class="md-nav__link">
+    Download the file at true_color_path
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+
+
+
+                  
+
+  
+  
+
+
+<h1 id="bassmap-module">BassMap module<a class="headerlink" href="#bassmap-module" title="Permanent link">&para;</a></h1>
+
+
+  <div class="doc doc-object doc-module">
+
+<a id="bassmap.bassmap"></a>
+    <div class="doc doc-contents first">
+
+      <p>Main module.</p>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 id="bassmap.bassmap.Mapomatic" class="doc doc-heading">
+        <code>
+Mapomatic            (<span title="ipyleaflet.leaflet.Map">Map</span>)
+        </code>
+
+
+
+<a href="#bassmap.bassmap.Mapomatic" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+
+        <details class="quote">
+          <summary>Source code in <code>bassmap/bassmap.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Mapomatic</span><span class="p">(</span><span class="n">Map</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mi">20</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s2">&quot;scroll_wheel_zoom&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;scroll_wheel_zoom&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">center</span> <span class="o">=</span> <span class="n">center</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">add_marker</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">marker</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">markers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">marker</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">marker</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">add_image</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">position</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">image</span> <span class="o">=</span> <span class="n">ImageOverlay</span><span class="p">(</span>
+            <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span>
+            <span class="n">bounds</span><span class="o">=</span><span class="p">[</span><span class="n">position</span><span class="p">,</span> <span class="p">(</span><span class="n">position</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">position</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">size</span><span class="p">[</span><span class="mi">1</span><span class="p">])],</span>
+            <span class="n">opacity</span><span class="o">=</span><span class="n">opacity</span><span class="p">,</span>
+            <span class="n">name</span><span class="o">=</span><span class="n">layer_name</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">add_raster</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Raster&#39;</span><span class="p">,</span> <span class="n">fit_bounds</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Adds a raster layer to the map.</span>
+<span class="sd">        Args:</span>
+<span class="sd">            url (str): The URL of the raster layer.</span>
+<span class="sd">            name (str, optional): The name of the raster layer. Defaults to &#39;Raster&#39;.</span>
+<span class="sd">            fit_bounds (bool, optional): Whether to fit the map bounds to the raster layer. Defaults to True.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">import</span> <span class="nn">httpx</span>
+
+        <span class="n">titiler_endpoint</span> <span class="o">=</span> <span class="s2">&quot;https://titiler.xyz&quot;</span>
+
+        <span class="n">r</span> <span class="o">=</span> <span class="n">httpx</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">titiler_endpoint</span><span class="si">}</span><span class="s2">/cog/info&quot;</span><span class="p">,</span>
+            <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="n">url</span><span class="p">,</span>
+            <span class="p">}</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+        <span class="n">bounds</span> <span class="o">=</span> <span class="n">r</span><span class="p">[</span><span class="s2">&quot;bounds&quot;</span><span class="p">]</span>
+
+        <span class="n">r</span> <span class="o">=</span> <span class="n">httpx</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">titiler_endpoint</span><span class="si">}</span><span class="s2">/cog/tilejson.json&quot;</span><span class="p">,</span>
+            <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="n">url</span><span class="p">,</span>
+            <span class="p">}</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+        <span class="n">tile</span> <span class="o">=</span> <span class="n">r</span><span class="p">[</span><span class="s2">&quot;tiles&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_tile_layer</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">tile</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">fit_bounds</span><span class="p">:</span>
+            <span class="n">bbox</span> <span class="o">=</span> <span class="p">[[</span><span class="n">bounds</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">bounds</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="p">[</span><span class="n">bounds</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">bounds</span><span class="p">[</span><span class="mi">2</span><span class="p">]]]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">fit_bounds</span><span class="p">(</span><span class="n">bbox</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">add_tile_layer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">attribution</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Adds a tile layer to the map.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            url (str): The URL of the tile layer.</span>
+<span class="sd">            name (str): The name of the tile layer</span>
+<span class="sd">            attribution (str, optional): The attribution of the tile layer. Defaults to **</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+        <span class="n">tile_layer</span> <span class="o">=</span> <span class="n">ipyleaflet</span><span class="o">.</span><span class="n">TileLayer</span><span class="p">(</span>
+            <span class="n">url</span> <span class="o">=</span> <span class="n">url</span><span class="p">,</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">,</span>
+            <span class="n">attribution</span> <span class="o">=</span> <span class="n">attribution</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">tile_layer</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">add_layers_control</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="s2">&quot;topright&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Adds a layers control to the map.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            kwargs: Keyword arguments to pass to the layers control</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">layers_control</span> <span class="o">=</span> <span class="n">ipyleaflet</span><span class="o">.</span><span class="n">LayersControl</span><span class="p">(</span><span class="n">position</span> <span class="o">=</span> <span class="n">position</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_control</span><span class="p">(</span><span class="n">layers_control</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">add_fullscreen_control</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="s2">&quot;topleft&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Adds a fullscreen control to the map.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            kwargs: Keyward arguments to pass to the layers control.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">fullscreen_control</span> <span class="o">=</span> <span class="n">ipyleaflet</span><span class="o">.</span><span class="n">FullScreenControl</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="n">position</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_control</span><span class="p">(</span><span class="n">fullscreen_control</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">add_basemap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">basemap_name</span><span class="p">,</span> <span class="n">url_template</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Adds a basemap to the map using a URL template.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">        basemap_name (str): The name of the basemap to add.</span>
+<span class="sd">        url_template (str): The URL template to use for the new basemap layer. Must be </span>
+<span class="sd">            a valid XYZ tile service.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Remove the default OpenStreetMap basemap layer, if present</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">remove_layer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+        <span class="c1"># Add the new basemap layer</span>
+        <span class="n">new_layer</span> <span class="o">=</span> <span class="n">TileLayer</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url_template</span><span class="p">,</span> <span class="n">attribution</span><span class="o">=</span><span class="n">basemap_name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">new_layer</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">add_shp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shp_path</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Adds a shapefile to the map. </span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">        shp_path (str): The file path or HTTP URL to the shapefile in a zip file.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># If the path is an HTTP URL, download and unzip the shapefile</span>
+        <span class="k">if</span> <span class="n">shp_path</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">):</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">shp_path</span><span class="p">)</span>
+            <span class="k">with</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">))</span> <span class="k">as</span> <span class="n">zip_ref</span><span class="p">:</span>
+                <span class="n">zip_ref</span><span class="o">.</span><span class="n">extractall</span><span class="p">()</span>
+            <span class="n">shp_path</span> <span class="o">=</span> <span class="n">shp_path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;.shp&#39;</span>
+
+        <span class="c1"># Read the shapefile using GeoPandas</span>
+        <span class="n">gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">shp_path</span><span class="p">)</span>
+
+        <span class="c1"># Convert the GeoDataFrame to a GeoJSON object</span>
+        <span class="n">geojson</span> <span class="o">=</span> <span class="n">GeoJSON</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">gdf</span><span class="o">.</span><span class="n">__geo_interface__</span><span class="p">)</span>
+
+        <span class="c1"># Add the GeoJSON layer to the map</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">geojson</span><span class="p">)</span>
+
+        <span class="c1"># Add a layer control to the map</span>
+        <span class="n">control</span> <span class="o">=</span> <span class="n">LayersControl</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="s1">&#39;topright&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_control</span><span class="p">(</span><span class="n">control</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">add_geojson</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">geojson_path</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Adds a GeoJSON file to the map. </span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">        geojson_path (str or dict): The file path or dictionary object containing GeoJSON data.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># If the path is an HTTP URL, download the GeoJSON file</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">geojson_path</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="n">geojson_path</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">):</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">geojson_path</span><span class="p">)</span>
+            <span class="n">geojson_data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+        <span class="c1"># Otherwise, assume it&#39;s a file path or a dictionary object</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">geojson_path</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                <span class="n">geojson_data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+        <span class="c1"># Create a GeoJSON layer and add it to the map</span>
+        <span class="n">geojson</span> <span class="o">=</span> <span class="n">GeoJSON</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">geojson_data</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">geojson</span><span class="p">)</span>
+
+        <span class="c1"># Add a layer control to the map</span>
+        <span class="n">control</span> <span class="o">=</span> <span class="n">LayersControl</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="s1">&#39;topright&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_control</span><span class="p">(</span><span class="n">control</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">add_vector</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vector_data</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Adds a vector data to the map. The vector data can be in any GeoPandas-supported</span>
+<span class="sd">        format, such as GeoJSON, shapefile, GeoDataFrame, etc.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">        vector_data (str or dict or GeoDataFrame): The vector data to add to the map. </span>
+<span class="sd">            Can be a file path or URL to the vector data, a dictionary object containing </span>
+<span class="sd">            GeoJSON data, or a GeoDataFrame.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># If the vector data is a file path or URL, read it using GeoPandas</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">vector_data</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">vector_data</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                <span class="n">gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">vector_data</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+        <span class="c1"># If the vector data is a dictionary object, create a GeoDataFrame</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">vector_data</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="n">gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="o">.</span><span class="n">from_features</span><span class="p">(</span><span class="n">vector_data</span><span class="p">[</span><span class="s1">&#39;features&#39;</span><span class="p">])</span>
+        <span class="c1"># If the vector data is already a GeoDataFrame, use it directly</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">vector_data</span><span class="p">,</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">):</span>
+            <span class="n">gdf</span> <span class="o">=</span> <span class="n">vector_data</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Invalid vector data format. Must be a file path or URL, a dictionary object containing GeoJSON data, or a GeoDataFrame.&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Convert the GeoDataFrame to a GeoJSON object</span>
+        <span class="n">geojson</span> <span class="o">=</span> <span class="n">GeoJSON</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">gdf</span><span class="o">.</span><span class="n">__geo_interface__</span><span class="p">)</span>
+
+        <span class="c1"># Add the GeoJSON layer to the map</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">geojson</span><span class="p">)</span>
+
+        <span class="c1"># Add a layer control to the map</span>
+        <span class="n">control</span> <span class="o">=</span> <span class="n">LayersControl</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="s1">&#39;topright&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_control</span><span class="p">(</span><span class="n">control</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">select_basemap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Adds a basemap selector to the map instance.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            self: bassmap Mapomatic: map instance called by user</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bassmap Mapomatic: displays drop down menu when called to the Mapomatic class</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">output_widget</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Output</span><span class="p">(</span><span class="n">layout</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;border&#39;</span><span class="p">:</span> <span class="s1">&#39;1px solid white&#39;</span><span class="p">})</span>
+        <span class="n">output_widget</span><span class="o">.</span><span class="n">clear_output</span><span class="p">()</span>
+
+        <span class="k">with</span> <span class="n">output_widget</span><span class="p">:</span>
+            <span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">                &lt;style&gt;</span>
+<span class="s1">                    .widget-dropdown { background-color: black !important; }</span>
+<span class="s1">                    .widget-dropdown .widget-label { color: olive !important; }</span>
+<span class="s1">                &lt;/style&gt;</span>
+<span class="s1">            &#39;&#39;&#39;</span><span class="p">))</span>
+
+        <span class="n">basemap_ctrl</span> <span class="o">=</span> <span class="n">WidgetControl</span><span class="p">(</span><span class="n">widget</span> <span class="o">=</span> <span class="n">output_widget</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="s1">&#39;topright&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_control</span><span class="p">(</span><span class="n">basemap_ctrl</span><span class="p">)</span>
+
+        <span class="n">dropdown</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span>
+            <span class="n">options</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;OpenStreetMap&quot;</span><span class="p">,</span> <span class="s2">&quot;ESRI Imagery&quot;</span><span class="p">,</span> <span class="s2">&quot;OpenTopoMap&quot;</span><span class="p">,</span> <span class="s2">&quot;NatGeo World Map&quot;</span><span class="p">,</span> <span class="s2">&quot;Light Canvas&quot;</span><span class="p">],</span> 
+            <span class="n">value</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="n">description</span> <span class="o">=</span> <span class="s1">&#39;Basemap&#39;</span><span class="p">,</span>
+            <span class="n">style</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;initial&#39;</span><span class="p">,</span> <span class="s1">&#39;button_width&#39;</span><span class="p">:</span> <span class="s1">&#39;100px&#39;</span><span class="p">,</span> <span class="s1">&#39;button_color&#39;</span><span class="p">:</span> <span class="s1">&#39;olive&#39;</span><span class="p">,</span> <span class="s1">&#39;description_color&#39;</span><span class="p">:</span> <span class="s1">&#39;olive&#39;</span><span class="p">,</span> <span class="s1">&#39;background-color&#39;</span><span class="p">:</span> <span class="s1">&#39;olive&#39;</span><span class="p">}</span>
+        <span class="p">)</span>
+
+        <span class="n">icon_html</span> <span class="o">=</span> <span class="s1">&#39;&lt;i class=&quot;fa fa-window-close&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&#39;</span>
+        <span class="n">close_button</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">ToggleButton</span><span class="p">(</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+            <span class="n">tooltip</span> <span class="o">=</span> <span class="s2">&quot;Toggle basemap selector&quot;</span><span class="p">,</span>
+            <span class="n">description</span> <span class="o">=</span> <span class="s1">&#39;Close&#39;</span><span class="p">,</span>
+            <span class="n">icon</span> <span class="o">=</span> <span class="n">icon_html</span><span class="p">,</span>
+            <span class="n">button_style</span> <span class="o">=</span> <span class="s2">&quot;primary&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="n">close_button</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">button_color</span> <span class="o">=</span> <span class="s2">&quot;white&quot;</span>
+        <span class="n">close_button</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">font_weight</span> <span class="o">=</span> <span class="s2">&quot;bold&quot;</span>
+
+        <span class="n">close_button_icon</span> <span class="o">=</span> <span class="n">HTML</span><span class="p">(</span>
+            <span class="s1">&#39;&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css&quot;&gt;&#39;</span>
+            <span class="s1">&#39;&lt;i class=&quot;fa fa-times&quot;&gt;&lt;/i&gt;&#39;</span>
+        <span class="p">)</span>
+
+        <span class="n">widget_menu</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">([</span><span class="n">close_button</span><span class="p">,</span> <span class="n">dropdown</span><span class="p">])</span>
+
+
+        <span class="k">with</span> <span class="n">output_widget</span><span class="p">:</span>
+            <span class="n">display</span><span class="p">(</span><span class="n">widget_menu</span><span class="p">)</span>
+
+        <span class="k">def</span> <span class="nf">change_basemap</span><span class="p">(</span><span class="n">select</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">select</span><span class="p">[</span><span class="s2">&quot;new&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;OpenStreetMap&quot;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">basemap_name</span><span class="o">=</span> <span class="s2">&quot;OpenStreetMap&quot;</span><span class="p">,</span> <span class="n">url_template</span><span class="o">=</span><span class="s2">&quot;https://</span><span class="si">{s}</span><span class="s2">.tile.openstreetmap.org/</span><span class="si">{z}</span><span class="s2">/</span><span class="si">{x}</span><span class="s2">/</span><span class="si">{y}</span><span class="s2">.png&quot;</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">select</span><span class="p">[</span><span class="s2">&quot;new&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;ESRI Imagery&quot;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">basemap_name</span><span class="o">=</span> <span class="s2">&quot;Esri.WorldImagery&quot;</span><span class="p">,</span> <span class="n">url_template</span><span class="o">=</span><span class="s2">&quot;https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/</span><span class="si">{z}</span><span class="s2">/</span><span class="si">{y}</span><span class="s2">/</span><span class="si">{x}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">select</span><span class="p">[</span><span class="s2">&quot;new&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;OpenTopoMap&quot;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">basemap_name</span><span class="o">=</span> <span class="s2">&quot;OpenTopoMap&quot;</span><span class="p">,</span> <span class="n">url_template</span><span class="o">=</span><span class="s2">&quot;https://</span><span class="si">{s}</span><span class="s2">.tile.opentopomap.org/</span><span class="si">{z}</span><span class="s2">/</span><span class="si">{x}</span><span class="s2">/</span><span class="si">{y}</span><span class="s2">.png&quot;</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">select</span><span class="p">[</span><span class="s2">&quot;new&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;NatGeo World Map&quot;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">basemap_name</span><span class="o">=</span> <span class="s2">&quot;Esri.NatGeoWorldMap&quot;</span><span class="p">,</span> <span class="n">url_template</span><span class="o">=</span><span class="s2">&quot;https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/</span><span class="si">{z}</span><span class="s2">/</span><span class="si">{y}</span><span class="s2">/</span><span class="si">{x}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">select</span><span class="p">[</span><span class="s2">&quot;new&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Light Canvas&quot;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">basemap_name</span><span class="o">=</span> <span class="s2">&quot;CartoDB.Positron&quot;</span><span class="p">,</span> <span class="n">url_template</span><span class="o">=</span><span class="s2">&quot;https://</span><span class="si">{s}</span><span class="s2">.basemaps.cartocdn.com/light_all/</span><span class="si">{z}</span><span class="s2">/</span><span class="si">{x}</span><span class="s2">/</span><span class="si">{y}</span><span class="s2">.png&quot;</span><span class="p">)</span>
+
+        <span class="n">dropdown</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">change_basemap</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">)</span>
+
+        <span class="k">def</span> <span class="nf">close_basemap</span><span class="p">(</span><span class="n">select</span><span class="p">):</span>
+
+            <span class="k">if</span> <span class="n">select</span><span class="p">[</span><span class="s2">&quot;new&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="n">output_widget</span><span class="o">.</span><span class="n">clear_output</span><span class="p">()</span>
+                <span class="k">with</span> <span class="n">output_widget</span><span class="p">:</span>
+                    <span class="n">display</span><span class="p">(</span><span class="n">widget_menu</span><span class="p">)</span>
+
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">output_widget</span><span class="o">.</span><span class="n">clear_output</span><span class="p">()</span>
+                <span class="k">with</span> <span class="n">output_widget</span><span class="p">:</span>
+                    <span class="n">display</span><span class="p">(</span><span class="n">close_button</span><span class="p">)</span>
+
+        <span class="n">close_button</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">close_basemap</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="bassmap.bassmap.Mapomatic.add_basemap" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">add_basemap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">basemap_name</span><span class="p">,</span> <span class="n">url_template</span><span class="p">)</span></code>
+
+
+<a href="#bassmap.bassmap.Mapomatic.add_basemap" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Adds a basemap to the map using a URL template.</p>
+      <p>basemap_name (str): The name of the basemap to add.
+url_template (str): The URL template to use for the new basemap layer. Must be 
+    a valid XYZ tile service.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>bassmap/bassmap.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">add_basemap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">basemap_name</span><span class="p">,</span> <span class="n">url_template</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Adds a basemap to the map using a URL template.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">    basemap_name (str): The name of the basemap to add.</span>
+<span class="sd">    url_template (str): The URL template to use for the new basemap layer. Must be </span>
+<span class="sd">        a valid XYZ tile service.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Remove the default OpenStreetMap basemap layer, if present</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">remove_layer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+    <span class="c1"># Add the new basemap layer</span>
+    <span class="n">new_layer</span> <span class="o">=</span> <span class="n">TileLayer</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url_template</span><span class="p">,</span> <span class="n">attribution</span><span class="o">=</span><span class="n">basemap_name</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">new_layer</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="bassmap.bassmap.Mapomatic.add_fullscreen_control" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">add_fullscreen_control</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="s1">&#39;topleft&#39;</span><span class="p">)</span></code>
+
+
+<a href="#bassmap.bassmap.Mapomatic.add_fullscreen_control" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Adds a fullscreen control to the map.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>kwargs</code></td>
+        <td></td>
+        <td><p>Keyward arguments to pass to the layers control.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>bassmap/bassmap.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">add_fullscreen_control</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="s2">&quot;topleft&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Adds a fullscreen control to the map.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        kwargs: Keyward arguments to pass to the layers control.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">fullscreen_control</span> <span class="o">=</span> <span class="n">ipyleaflet</span><span class="o">.</span><span class="n">FullScreenControl</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="n">position</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">add_control</span><span class="p">(</span><span class="n">fullscreen_control</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="bassmap.bassmap.Mapomatic.add_geojson" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">add_geojson</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">geojson_path</span><span class="p">)</span></code>
+
+
+<a href="#bassmap.bassmap.Mapomatic.add_geojson" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Adds a GeoJSON file to the map. </p>
+      <p>geojson_path (str or dict): The file path or dictionary object containing GeoJSON data.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>bassmap/bassmap.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">add_geojson</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">geojson_path</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Adds a GeoJSON file to the map. </span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">    geojson_path (str or dict): The file path or dictionary object containing GeoJSON data.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># If the path is an HTTP URL, download the GeoJSON file</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">geojson_path</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="n">geojson_path</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">):</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">geojson_path</span><span class="p">)</span>
+        <span class="n">geojson_data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="c1"># Otherwise, assume it&#39;s a file path or a dictionary object</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">geojson_path</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">geojson_data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+    <span class="c1"># Create a GeoJSON layer and add it to the map</span>
+    <span class="n">geojson</span> <span class="o">=</span> <span class="n">GeoJSON</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">geojson_data</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">geojson</span><span class="p">)</span>
+
+    <span class="c1"># Add a layer control to the map</span>
+    <span class="n">control</span> <span class="o">=</span> <span class="n">LayersControl</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="s1">&#39;topright&#39;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">add_control</span><span class="p">(</span><span class="n">control</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="bassmap.bassmap.Mapomatic.add_layers_control" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">add_layers_control</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="s1">&#39;topright&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code>
+
+
+<a href="#bassmap.bassmap.Mapomatic.add_layers_control" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Adds a layers control to the map.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>kwargs</code></td>
+        <td></td>
+        <td><p>Keyword arguments to pass to the layers control</p></td>
+        <td><code>{}</code></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>bassmap/bassmap.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">add_layers_control</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="s2">&quot;topright&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Adds a layers control to the map.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        kwargs: Keyword arguments to pass to the layers control</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">layers_control</span> <span class="o">=</span> <span class="n">ipyleaflet</span><span class="o">.</span><span class="n">LayersControl</span><span class="p">(</span><span class="n">position</span> <span class="o">=</span> <span class="n">position</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">add_control</span><span class="p">(</span><span class="n">layers_control</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="bassmap.bassmap.Mapomatic.add_raster" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">add_raster</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Raster&#39;</span><span class="p">,</span> <span class="n">fit_bounds</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code>
+
+
+<a href="#bassmap.bassmap.Mapomatic.add_raster" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Adds a raster layer to the map.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>url</code></td>
+        <td><code>str</code></td>
+        <td><p>The URL of the raster layer.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>name</code></td>
+        <td><code>str</code></td>
+        <td><p>The name of the raster layer. Defaults to 'Raster'.</p></td>
+        <td><code>&#39;Raster&#39;</code></td>
+      </tr>
+      <tr>
+        <td><code>fit_bounds</code></td>
+        <td><code>bool</code></td>
+        <td><p>Whether to fit the map bounds to the raster layer. Defaults to True.</p></td>
+        <td><code>True</code></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>bassmap/bassmap.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">add_raster</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Raster&#39;</span><span class="p">,</span> <span class="n">fit_bounds</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Adds a raster layer to the map.</span>
+<span class="sd">    Args:</span>
+<span class="sd">        url (str): The URL of the raster layer.</span>
+<span class="sd">        name (str, optional): The name of the raster layer. Defaults to &#39;Raster&#39;.</span>
+<span class="sd">        fit_bounds (bool, optional): Whether to fit the map bounds to the raster layer. Defaults to True.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">import</span> <span class="nn">httpx</span>
+
+    <span class="n">titiler_endpoint</span> <span class="o">=</span> <span class="s2">&quot;https://titiler.xyz&quot;</span>
+
+    <span class="n">r</span> <span class="o">=</span> <span class="n">httpx</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">titiler_endpoint</span><span class="si">}</span><span class="s2">/cog/info&quot;</span><span class="p">,</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="n">url</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+    <span class="n">bounds</span> <span class="o">=</span> <span class="n">r</span><span class="p">[</span><span class="s2">&quot;bounds&quot;</span><span class="p">]</span>
+
+    <span class="n">r</span> <span class="o">=</span> <span class="n">httpx</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">titiler_endpoint</span><span class="si">}</span><span class="s2">/cog/tilejson.json&quot;</span><span class="p">,</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="n">url</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+    <span class="n">tile</span> <span class="o">=</span> <span class="n">r</span><span class="p">[</span><span class="s2">&quot;tiles&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">add_tile_layer</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">tile</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">fit_bounds</span><span class="p">:</span>
+        <span class="n">bbox</span> <span class="o">=</span> <span class="p">[[</span><span class="n">bounds</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">bounds</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="p">[</span><span class="n">bounds</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">bounds</span><span class="p">[</span><span class="mi">2</span><span class="p">]]]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fit_bounds</span><span class="p">(</span><span class="n">bbox</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="bassmap.bassmap.Mapomatic.add_shp" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">add_shp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shp_path</span><span class="p">)</span></code>
+
+
+<a href="#bassmap.bassmap.Mapomatic.add_shp" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Adds a shapefile to the map. </p>
+      <p>shp_path (str): The file path or HTTP URL to the shapefile in a zip file.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>bassmap/bassmap.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">add_shp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shp_path</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Adds a shapefile to the map. </span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">    shp_path (str): The file path or HTTP URL to the shapefile in a zip file.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># If the path is an HTTP URL, download and unzip the shapefile</span>
+    <span class="k">if</span> <span class="n">shp_path</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">):</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">shp_path</span><span class="p">)</span>
+        <span class="k">with</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">))</span> <span class="k">as</span> <span class="n">zip_ref</span><span class="p">:</span>
+            <span class="n">zip_ref</span><span class="o">.</span><span class="n">extractall</span><span class="p">()</span>
+        <span class="n">shp_path</span> <span class="o">=</span> <span class="n">shp_path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;.shp&#39;</span>
+
+    <span class="c1"># Read the shapefile using GeoPandas</span>
+    <span class="n">gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">shp_path</span><span class="p">)</span>
+
+    <span class="c1"># Convert the GeoDataFrame to a GeoJSON object</span>
+    <span class="n">geojson</span> <span class="o">=</span> <span class="n">GeoJSON</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">gdf</span><span class="o">.</span><span class="n">__geo_interface__</span><span class="p">)</span>
+
+    <span class="c1"># Add the GeoJSON layer to the map</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">geojson</span><span class="p">)</span>
+
+    <span class="c1"># Add a layer control to the map</span>
+    <span class="n">control</span> <span class="o">=</span> <span class="n">LayersControl</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="s1">&#39;topright&#39;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">add_control</span><span class="p">(</span><span class="n">control</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="bassmap.bassmap.Mapomatic.add_tile_layer" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">add_tile_layer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">attribution</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code>
+
+
+<a href="#bassmap.bassmap.Mapomatic.add_tile_layer" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Adds a tile layer to the map.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>url</code></td>
+        <td><code>str</code></td>
+        <td><p>The URL of the tile layer.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>name</code></td>
+        <td><code>str</code></td>
+        <td><p>The name of the tile layer</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>attribution</code></td>
+        <td><code>str</code></td>
+        <td><p>The attribution of the tile layer. Defaults to **</p></td>
+        <td><code>&#39;&#39;</code></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>bassmap/bassmap.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">add_tile_layer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">attribution</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Adds a tile layer to the map.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        url (str): The URL of the tile layer.</span>
+<span class="sd">        name (str): The name of the tile layer</span>
+<span class="sd">        attribution (str, optional): The attribution of the tile layer. Defaults to **</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="n">tile_layer</span> <span class="o">=</span> <span class="n">ipyleaflet</span><span class="o">.</span><span class="n">TileLayer</span><span class="p">(</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="n">url</span><span class="p">,</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">,</span>
+        <span class="n">attribution</span> <span class="o">=</span> <span class="n">attribution</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span>
+    <span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">tile_layer</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="bassmap.bassmap.Mapomatic.add_vector" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">add_vector</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vector_data</span><span class="p">)</span></code>
+
+
+<a href="#bassmap.bassmap.Mapomatic.add_vector" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Adds a vector data to the map. The vector data can be in any GeoPandas-supported
+format, such as GeoJSON, shapefile, GeoDataFrame, etc.</p>
+      <p>vector_data (str or dict or GeoDataFrame): The vector data to add to the map. 
+    Can be a file path or URL to the vector data, a dictionary object containing 
+    GeoJSON data, or a GeoDataFrame.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>bassmap/bassmap.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">add_vector</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vector_data</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Adds a vector data to the map. The vector data can be in any GeoPandas-supported</span>
+<span class="sd">    format, such as GeoJSON, shapefile, GeoDataFrame, etc.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">    vector_data (str or dict or GeoDataFrame): The vector data to add to the map. </span>
+<span class="sd">        Can be a file path or URL to the vector data, a dictionary object containing </span>
+<span class="sd">        GeoJSON data, or a GeoDataFrame.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># If the vector data is a file path or URL, read it using GeoPandas</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">vector_data</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">vector_data</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="n">gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">vector_data</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+    <span class="c1"># If the vector data is a dictionary object, create a GeoDataFrame</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">vector_data</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="n">gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="o">.</span><span class="n">from_features</span><span class="p">(</span><span class="n">vector_data</span><span class="p">[</span><span class="s1">&#39;features&#39;</span><span class="p">])</span>
+    <span class="c1"># If the vector data is already a GeoDataFrame, use it directly</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">vector_data</span><span class="p">,</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">):</span>
+        <span class="n">gdf</span> <span class="o">=</span> <span class="n">vector_data</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Invalid vector data format. Must be a file path or URL, a dictionary object containing GeoJSON data, or a GeoDataFrame.&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Convert the GeoDataFrame to a GeoJSON object</span>
+    <span class="n">geojson</span> <span class="o">=</span> <span class="n">GeoJSON</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">gdf</span><span class="o">.</span><span class="n">__geo_interface__</span><span class="p">)</span>
+
+    <span class="c1"># Add the GeoJSON layer to the map</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">geojson</span><span class="p">)</span>
+
+    <span class="c1"># Add a layer control to the map</span>
+    <span class="n">control</span> <span class="o">=</span> <span class="n">LayersControl</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="s1">&#39;topright&#39;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">add_control</span><span class="p">(</span><span class="n">control</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="bassmap.bassmap.Mapomatic.select_basemap" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">select_basemap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code>
+
+
+<a href="#bassmap.bassmap.Mapomatic.select_basemap" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Adds a basemap selector to the map instance.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>self</code></td>
+        <td></td>
+        <td><p>bassmap Mapomatic: map instance called by user</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>bassmap Mapomatic</code></td>
+      <td><p>displays drop down menu when called to the Mapomatic class</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>bassmap/bassmap.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">select_basemap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Adds a basemap selector to the map instance.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        self: bassmap Mapomatic: map instance called by user</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        bassmap Mapomatic: displays drop down menu when called to the Mapomatic class</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">output_widget</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Output</span><span class="p">(</span><span class="n">layout</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;border&#39;</span><span class="p">:</span> <span class="s1">&#39;1px solid white&#39;</span><span class="p">})</span>
+    <span class="n">output_widget</span><span class="o">.</span><span class="n">clear_output</span><span class="p">()</span>
+
+    <span class="k">with</span> <span class="n">output_widget</span><span class="p">:</span>
+        <span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">            &lt;style&gt;</span>
+<span class="s1">                .widget-dropdown { background-color: black !important; }</span>
+<span class="s1">                .widget-dropdown .widget-label { color: olive !important; }</span>
+<span class="s1">            &lt;/style&gt;</span>
+<span class="s1">        &#39;&#39;&#39;</span><span class="p">))</span>
+
+    <span class="n">basemap_ctrl</span> <span class="o">=</span> <span class="n">WidgetControl</span><span class="p">(</span><span class="n">widget</span> <span class="o">=</span> <span class="n">output_widget</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="s1">&#39;topright&#39;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">add_control</span><span class="p">(</span><span class="n">basemap_ctrl</span><span class="p">)</span>
+
+    <span class="n">dropdown</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span>
+        <span class="n">options</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;OpenStreetMap&quot;</span><span class="p">,</span> <span class="s2">&quot;ESRI Imagery&quot;</span><span class="p">,</span> <span class="s2">&quot;OpenTopoMap&quot;</span><span class="p">,</span> <span class="s2">&quot;NatGeo World Map&quot;</span><span class="p">,</span> <span class="s2">&quot;Light Canvas&quot;</span><span class="p">],</span> 
+        <span class="n">value</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">description</span> <span class="o">=</span> <span class="s1">&#39;Basemap&#39;</span><span class="p">,</span>
+        <span class="n">style</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;initial&#39;</span><span class="p">,</span> <span class="s1">&#39;button_width&#39;</span><span class="p">:</span> <span class="s1">&#39;100px&#39;</span><span class="p">,</span> <span class="s1">&#39;button_color&#39;</span><span class="p">:</span> <span class="s1">&#39;olive&#39;</span><span class="p">,</span> <span class="s1">&#39;description_color&#39;</span><span class="p">:</span> <span class="s1">&#39;olive&#39;</span><span class="p">,</span> <span class="s1">&#39;background-color&#39;</span><span class="p">:</span> <span class="s1">&#39;olive&#39;</span><span class="p">}</span>
+    <span class="p">)</span>
+
+    <span class="n">icon_html</span> <span class="o">=</span> <span class="s1">&#39;&lt;i class=&quot;fa fa-window-close&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&#39;</span>
+    <span class="n">close_button</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">ToggleButton</span><span class="p">(</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">tooltip</span> <span class="o">=</span> <span class="s2">&quot;Toggle basemap selector&quot;</span><span class="p">,</span>
+        <span class="n">description</span> <span class="o">=</span> <span class="s1">&#39;Close&#39;</span><span class="p">,</span>
+        <span class="n">icon</span> <span class="o">=</span> <span class="n">icon_html</span><span class="p">,</span>
+        <span class="n">button_style</span> <span class="o">=</span> <span class="s2">&quot;primary&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">close_button</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">button_color</span> <span class="o">=</span> <span class="s2">&quot;white&quot;</span>
+    <span class="n">close_button</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">font_weight</span> <span class="o">=</span> <span class="s2">&quot;bold&quot;</span>
+
+    <span class="n">close_button_icon</span> <span class="o">=</span> <span class="n">HTML</span><span class="p">(</span>
+        <span class="s1">&#39;&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css&quot;&gt;&#39;</span>
+        <span class="s1">&#39;&lt;i class=&quot;fa fa-times&quot;&gt;&lt;/i&gt;&#39;</span>
+    <span class="p">)</span>
+
+    <span class="n">widget_menu</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">([</span><span class="n">close_button</span><span class="p">,</span> <span class="n">dropdown</span><span class="p">])</span>
+
+
+    <span class="k">with</span> <span class="n">output_widget</span><span class="p">:</span>
+        <span class="n">display</span><span class="p">(</span><span class="n">widget_menu</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">change_basemap</span><span class="p">(</span><span class="n">select</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">select</span><span class="p">[</span><span class="s2">&quot;new&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;OpenStreetMap&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">basemap_name</span><span class="o">=</span> <span class="s2">&quot;OpenStreetMap&quot;</span><span class="p">,</span> <span class="n">url_template</span><span class="o">=</span><span class="s2">&quot;https://</span><span class="si">{s}</span><span class="s2">.tile.openstreetmap.org/</span><span class="si">{z}</span><span class="s2">/</span><span class="si">{x}</span><span class="s2">/</span><span class="si">{y}</span><span class="s2">.png&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">select</span><span class="p">[</span><span class="s2">&quot;new&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;ESRI Imagery&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">basemap_name</span><span class="o">=</span> <span class="s2">&quot;Esri.WorldImagery&quot;</span><span class="p">,</span> <span class="n">url_template</span><span class="o">=</span><span class="s2">&quot;https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/</span><span class="si">{z}</span><span class="s2">/</span><span class="si">{y}</span><span class="s2">/</span><span class="si">{x}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">select</span><span class="p">[</span><span class="s2">&quot;new&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;OpenTopoMap&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">basemap_name</span><span class="o">=</span> <span class="s2">&quot;OpenTopoMap&quot;</span><span class="p">,</span> <span class="n">url_template</span><span class="o">=</span><span class="s2">&quot;https://</span><span class="si">{s}</span><span class="s2">.tile.opentopomap.org/</span><span class="si">{z}</span><span class="s2">/</span><span class="si">{x}</span><span class="s2">/</span><span class="si">{y}</span><span class="s2">.png&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">select</span><span class="p">[</span><span class="s2">&quot;new&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;NatGeo World Map&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">basemap_name</span><span class="o">=</span> <span class="s2">&quot;Esri.NatGeoWorldMap&quot;</span><span class="p">,</span> <span class="n">url_template</span><span class="o">=</span><span class="s2">&quot;https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/</span><span class="si">{z}</span><span class="s2">/</span><span class="si">{y}</span><span class="s2">/</span><span class="si">{x}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">select</span><span class="p">[</span><span class="s2">&quot;new&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Light Canvas&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">basemap_name</span><span class="o">=</span> <span class="s2">&quot;CartoDB.Positron&quot;</span><span class="p">,</span> <span class="n">url_template</span><span class="o">=</span><span class="s2">&quot;https://</span><span class="si">{s}</span><span class="s2">.basemaps.cartocdn.com/light_all/</span><span class="si">{z}</span><span class="s2">/</span><span class="si">{x}</span><span class="s2">/</span><span class="si">{y}</span><span class="s2">.png&quot;</span><span class="p">)</span>
+
+    <span class="n">dropdown</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">change_basemap</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">close_basemap</span><span class="p">(</span><span class="n">select</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="n">select</span><span class="p">[</span><span class="s2">&quot;new&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">output_widget</span><span class="o">.</span><span class="n">clear_output</span><span class="p">()</span>
+            <span class="k">with</span> <span class="n">output_widget</span><span class="p">:</span>
+                <span class="n">display</span><span class="p">(</span><span class="n">widget_menu</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">output_widget</span><span class="o">.</span><span class="n">clear_output</span><span class="p">()</span>
+            <span class="k">with</span> <span class="n">output_widget</span><span class="p">:</span>
+                <span class="n">display</span><span class="p">(</span><span class="n">close_button</span><span class="p">)</span>
+
+    <span class="n">close_button</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">close_basemap</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="bassmap.bassmap.generate_input_points" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">generate_input_points</span><span class="p">()</span></code>
+
+
+<a href="#bassmap.bassmap.generate_input_points" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Input name and either generate random point or input coordinates to shapefile and display on map.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>name</code></td>
+        <td></td>
+        <td><p>Name of the location.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>lat</code></td>
+        <td><code>int</code></td>
+        <td><p>The latitude value</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>lon</code></td>
+        <td><code>int</code></td>
+        <td><p>The longitude value</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>generate_random</code></td>
+        <td><code>int</code></td>
+        <td><p>Whether to generate random coordinates or use custom</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Exceptions:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>ValueError</code></td>
+        <td><p>Latitude must be between -90 and 90 degrees</p></td>
+      </tr>
+      <tr>
+        <td><code>ValueError</code></td>
+        <td><p>Longitude must be between -180 and 180 degrees</p></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>bassmap/bassmap.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">generate_input_points</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Input name and either generate random point or input coordinates to shapefile and display on map.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        name (): Name of the location.</span>
+<span class="sd">        lat (int, optional): The latitude value</span>
+<span class="sd">        lon (int, optional): The longitude value</span>
+<span class="sd">        generate_random (int, optional): Whether to generate random coordinates or use custom</span>
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError: Latitude must be between -90 and 90 degrees</span>
+<span class="sd">        ValueError: Longitude must be between -180 and 180 degrees</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter location name (or &#39;q&#39; to finish): &quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;q&#39;</span><span class="p">:</span>
+            <span class="k">break</span>
+
+        <span class="n">generate_random</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Generate random point? (y/n): &quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">generate_random</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span>
+
+            <span class="n">lat</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">)</span>
+            <span class="n">lon</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">180</span><span class="p">,</span> <span class="mi">180</span><span class="p">)</span>
+            <span class="n">locations</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;lat&#39;</span><span class="p">:</span> <span class="n">lat</span><span class="p">,</span> <span class="s1">&#39;lon&#39;</span><span class="p">:</span> <span class="n">lon</span><span class="p">}</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The location </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> is located at (</span><span class="si">{</span><span class="n">lat</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">lon</span><span class="si">}</span><span class="s2">).</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">lat</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter latitude: &quot;</span><span class="p">)</span>
+            <span class="n">lon</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter longitude: &quot;</span><span class="p">)</span>
+
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">lat</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">lat</span><span class="p">)</span>
+                <span class="n">lon</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">lon</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">lat</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">90</span> <span class="ow">or</span> <span class="n">lat</span> <span class="o">&gt;</span> <span class="mi">90</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Latitude must be between -90 and 90 degrees&quot;</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">lon</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">180</span> <span class="ow">or</span> <span class="n">lon</span> <span class="o">&gt;</span> <span class="mi">180</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Longitude must be between -180 and 180 degrees&quot;</span><span class="p">)</span>
+
+                <span class="n">locations</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;lat&#39;</span><span class="p">:</span> <span class="n">lat</span><span class="p">,</span> <span class="s1">&#39;lon&#39;</span><span class="p">:</span> <span class="n">lon</span><span class="p">}</span>
+
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The location </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> is located at (</span><span class="si">{</span><span class="n">lat</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">lon</span><span class="si">}</span><span class="s2">).</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+            <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid input: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="bassmap.bassmap.get_NDVI" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">get_NDVI</span><span class="p">(</span><span class="n">red_band</span><span class="p">,</span> <span class="n">nir_band</span><span class="p">,</span> <span class="n">georef</span><span class="p">)</span></code>
+
+
+<a href="#bassmap.bassmap.get_NDVI" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Calculates the Normalized Difference Vegetation Index (NDVI) from Red and Near Infrared (NIR) bands.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>red_band</code></td>
+        <td><code>numpy.ndarray</code></td>
+        <td><p>A 2D or 3D array containing the Red band data.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>nir_band</code></td>
+        <td><code>numpy.ndarray</code></td>
+        <td><p>A 2D or 3D array containing the Near Infrared band data.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>georef</code></td>
+        <td><code>osgeo.gdal.Dataset</code></td>
+        <td><p>A GDAL dataset containing georeferencing information for the input bands.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>str</code></td>
+      <td><p>The path to the created NDVI file.</p></td>
+    </tr>
+  </tbody>
+</table>
+<p><strong>Exceptions:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>ValueError</code></td>
+        <td><p>If the input arrays are not of the same shape.</p></td>
+      </tr>
+      <tr>
+        <td><code>ValueError</code></td>
+        <td><p>If the input arrays have different data types.</p></td>
+      </tr>
+      <tr>
+        <td><code>ValueError</code></td>
+        <td><p>If the input arrays have invalid values.</p></td>
+      </tr>
+      <tr>
+        <td><code>ImportError</code></td>
+        <td><p>If the GDAL library is not installed.</p></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Examples:</strong></p>
+    <p>red_band = gdal.Open('path/to/red_band.tif').ReadAsArray()
+nir_band = gdal.Open('path/to/nir_band.tif').ReadAsArray()
+georef = gdal.Open('path/to/reference.tif')</p>
+<h3 id="bassmap.bassmap.get_NDVI--generate-an-ndvi-composite-image-and-download-it">Generate an NDVI composite image and download it<a class="headerlink" href="#bassmap.bassmap.get_NDVI--generate-an-ndvi-composite-image-and-download-it" title="Permanent link">&para;</a></h3>
+<p>ndvi_path = get_NDVI(red_band, nir_band, georef)</p>
+<h3 id="bassmap.bassmap.get_NDVI--download-the-file-at-ndvi_path">Download the file at ndvi_path<a class="headerlink" href="#bassmap.bassmap.get_NDVI--download-the-file-at-ndvi_path" title="Permanent link">&para;</a></h3>
+
+        <details class="quote">
+          <summary>Source code in <code>bassmap/bassmap.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_NDVI</span><span class="p">(</span><span class="n">red_band</span><span class="p">,</span> <span class="n">nir_band</span><span class="p">,</span> <span class="n">georef</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculates the Normalized Difference Vegetation Index (NDVI) from Red and Near Infrared (NIR) bands.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        red_band (numpy.ndarray): A 2D or 3D array containing the Red band data.</span>
+<span class="sd">        nir_band (numpy.ndarray): A 2D or 3D array containing the Near Infrared band data.</span>
+<span class="sd">        georef (osgeo.gdal.Dataset): A GDAL dataset containing georeferencing information for the input bands.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: The path to the created NDVI file.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError: If the input arrays are not of the same shape.</span>
+<span class="sd">        ValueError: If the input arrays have different data types.</span>
+<span class="sd">        ValueError: If the input arrays have invalid values.</span>
+<span class="sd">        ImportError: If the GDAL library is not installed.</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        red_band = gdal.Open(&#39;path/to/red_band.tif&#39;).ReadAsArray()</span>
+<span class="sd">        nir_band = gdal.Open(&#39;path/to/nir_band.tif&#39;).ReadAsArray()</span>
+<span class="sd">        georef = gdal.Open(&#39;path/to/reference.tif&#39;)</span>
+
+<span class="sd">        # Generate an NDVI composite image and download it</span>
+<span class="sd">        ndvi_path = get_NDVI(red_band, nir_band, georef)</span>
+<span class="sd">        # Download the file at ndvi_path</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="kn">from</span> <span class="nn">osgeo</span> <span class="kn">import</span> <span class="n">gdal</span>
+
+    <span class="c1"># Scale the input bands to the range of 0-255</span>
+    <span class="n">red_band</span> <span class="o">=</span> <span class="p">(</span><span class="n">red_band</span> <span class="o">/</span> <span class="mf">65535.0</span><span class="p">)</span> <span class="o">*</span> <span class="mf">255.0</span>
+    <span class="n">nir_band</span> <span class="o">=</span> <span class="p">(</span><span class="n">nir_band</span> <span class="o">/</span> <span class="mf">65535.0</span><span class="p">)</span> <span class="o">*</span> <span class="mf">255.0</span>
+
+    <span class="c1"># Calculate the NDVI from the NIR and Red bands</span>
+    <span class="n">ndvi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">nir_band</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="n">ndvi</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+    <span class="n">valid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">red_band</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">nir_band</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">ndvi</span><span class="p">[</span><span class="n">valid</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">nir_band</span><span class="p">[</span><span class="n">valid</span><span class="p">]</span> <span class="o">-</span> <span class="n">red_band</span><span class="p">[</span><span class="n">valid</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="n">nir_band</span><span class="p">[</span><span class="n">valid</span><span class="p">]</span> <span class="o">+</span> <span class="n">red_band</span><span class="p">[</span><span class="n">valid</span><span class="p">])</span>
+
+    <span class="c1"># Get the dimensions and georeferencing information from one of the input files</span>
+    <span class="n">xsize</span> <span class="o">=</span> <span class="n">georef</span><span class="o">.</span><span class="n">RasterXSize</span>
+    <span class="n">ysize</span> <span class="o">=</span> <span class="n">georef</span><span class="o">.</span><span class="n">RasterYSize</span>
+    <span class="n">proj</span> <span class="o">=</span> <span class="n">georef</span><span class="o">.</span><span class="n">GetProjection</span><span class="p">()</span>
+    <span class="n">geotrans</span> <span class="o">=</span> <span class="n">georef</span><span class="o">.</span><span class="n">GetGeoTransform</span><span class="p">()</span>
+    <span class="n">driver</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">GetDriverByName</span><span class="p">(</span><span class="s1">&#39;GTiff&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Create a new TIFF file and write the NDVI array to it</span>
+    <span class="n">ndvi_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tmp_dir</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;ndvi_composite.tif&#39;</span><span class="p">)</span>
+    <span class="n">ndvi_ds</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">Create</span><span class="p">(</span><span class="n">ndvi_path</span><span class="p">,</span> <span class="n">xsize</span><span class="p">,</span> <span class="n">ysize</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">gdal</span><span class="o">.</span><span class="n">GDT_Float32</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">ndvi_ds</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">ndvi_ds</span><span class="o">.</span><span class="n">SetProjection</span><span class="p">(</span><span class="n">proj</span><span class="p">)</span>
+        <span class="n">ndvi_ds</span><span class="o">.</span><span class="n">SetGeoTransform</span><span class="p">(</span><span class="n">geotrans</span><span class="p">)</span>
+        <span class="n">ndvi_ds</span><span class="o">.</span><span class="n">GetRasterBand</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">WriteArray</span><span class="p">(</span><span class="n">ndvi</span><span class="p">)</span>
+        <span class="n">ndvi_ds</span><span class="o">.</span><span class="n">FlushCache</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Failed to create TIFF file&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">ndvi_path</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="bassmap.bassmap.get_color_infrared" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">get_color_infrared</span><span class="p">(</span><span class="n">nir_band</span><span class="p">,</span> <span class="n">red_band</span><span class="p">,</span> <span class="n">green_band</span><span class="p">,</span> <span class="n">georef</span><span class="p">)</span></code>
+
+
+<a href="#bassmap.bassmap.get_color_infrared" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Combines a near-infrared band, red band, and green band into a single 3-band image,
+where the near-infrared band is displayed as red, the red band is displayed as green,
+and the green band is displayed as blue. This produces a color infrared image that
+accentuates the buildings in the scene.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>nir_band</code></td>
+        <td><code>numpy array</code></td>
+        <td><p>A 2D numpy array representing a near-infrared band</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>red_band</code></td>
+        <td><code>numpy array</code></td>
+        <td><p>A 2D numpy array representing a red band</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>green_band</code></td>
+        <td><code>numpy array</code></td>
+        <td><p>A 2D numpy array representing a green band</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>georef</code></td>
+        <td><code>osgeo.gdal.Dataset</code></td>
+        <td><p>A GDAL dataset containing georeferencing information for the input bands.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>str</code></td>
+      <td><p>The path to the created color infrared file.</p></td>
+    </tr>
+  </tbody>
+</table>
+<p><strong>Exceptions:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>ValueError</code></td>
+        <td><p>If the input arrays are not of the same shape.</p></td>
+      </tr>
+      <tr>
+        <td><code>ValueError</code></td>
+        <td><p>If the input arrays have different data types.</p></td>
+      </tr>
+      <tr>
+        <td><code>ValueError</code></td>
+        <td><p>If the input arrays have invalid values.</p></td>
+      </tr>
+      <tr>
+        <td><code>ImportError</code></td>
+        <td><p>If the GDAL library is not installed.</p></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Examples:</strong></p>
+    <h3 id="bassmap.bassmap.get_color_infrared--load-the-input-bands-as-numpy-arrays">Load the input bands as numpy arrays<a class="headerlink" href="#bassmap.bassmap.get_color_infrared--load-the-input-bands-as-numpy-arrays" title="Permanent link">&para;</a></h3>
+<p>nir_band = gdal.Open('path/to/nir_band.tif').ReadAsArray()
+red_band = gdal.Open('path/to/red_band.tif').ReadAsArray()
+green_band = gdal.Open('path/to/green_band.tif').ReadAsArray()
+georef = gdal.Open('path/to/reference.tif')</p>
+<h3 id="bassmap.bassmap.get_color_infrared--generate-a-color-infrared-composite-image-and-download-it">Generate a color infrared composite image and download it<a class="headerlink" href="#bassmap.bassmap.get_color_infrared--generate-a-color-infrared-composite-image-and-download-it" title="Permanent link">&para;</a></h3>
+<p>color_infrared_path = get_color_infrared(nir_band, red_band, green_band, georef)</p>
+<h3 id="bassmap.bassmap.get_color_infrared--download-the-file-at-color_infrared_path">Download the file at color_infrared_path<a class="headerlink" href="#bassmap.bassmap.get_color_infrared--download-the-file-at-color_infrared_path" title="Permanent link">&para;</a></h3>
+
+        <details class="quote">
+          <summary>Source code in <code>bassmap/bassmap.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_color_infrared</span><span class="p">(</span><span class="n">nir_band</span><span class="p">,</span> <span class="n">red_band</span><span class="p">,</span> <span class="n">green_band</span><span class="p">,</span> <span class="n">georef</span><span class="p">):</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Combines a near-infrared band, red band, and green band into a single 3-band image,</span>
+<span class="sd">    where the near-infrared band is displayed as red, the red band is displayed as green,</span>
+<span class="sd">    and the green band is displayed as blue. This produces a color infrared image that</span>
+<span class="sd">    accentuates the buildings in the scene.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        nir_band (numpy array): A 2D numpy array representing a near-infrared band</span>
+<span class="sd">        red_band (numpy array): A 2D numpy array representing a red band</span>
+<span class="sd">        green_band (numpy array): A 2D numpy array representing a green band</span>
+<span class="sd">        georef (osgeo.gdal.Dataset): A GDAL dataset containing georeferencing information for the input bands.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: The path to the created color infrared file.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError: If the input arrays are not of the same shape.</span>
+<span class="sd">        ValueError: If the input arrays have different data types.</span>
+<span class="sd">        ValueError: If the input arrays have invalid values.</span>
+<span class="sd">        ImportError: If the GDAL library is not installed.</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">        # Load the input bands as numpy arrays</span>
+<span class="sd">        nir_band = gdal.Open(&#39;path/to/nir_band.tif&#39;).ReadAsArray()</span>
+<span class="sd">        red_band = gdal.Open(&#39;path/to/red_band.tif&#39;).ReadAsArray()</span>
+<span class="sd">        green_band = gdal.Open(&#39;path/to/green_band.tif&#39;).ReadAsArray()</span>
+<span class="sd">        georef = gdal.Open(&#39;path/to/reference.tif&#39;)</span>
+
+<span class="sd">        # Generate a color infrared composite image and download it</span>
+<span class="sd">        color_infrared_path = get_color_infrared(nir_band, red_band, green_band, georef)</span>
+<span class="sd">        # Download the file at color_infrared_path</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="kn">from</span> <span class="nn">osgeo</span> <span class="kn">import</span> <span class="n">gdal</span>
+
+    <span class="c1"># Combine the three bands into a single 3D array with 3 bands</span>
+    <span class="n">color_infrared</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">nir_band</span><span class="p">,</span> <span class="n">red_band</span><span class="p">,</span> <span class="n">green_band</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint16</span><span class="p">)</span>
+
+    <span class="c1"># Get the dimensions and georeferencing information from one of the input files</span>
+    <span class="n">xsize</span> <span class="o">=</span> <span class="n">georef</span><span class="o">.</span><span class="n">RasterXSize</span>
+    <span class="n">ysize</span> <span class="o">=</span> <span class="n">georef</span><span class="o">.</span><span class="n">RasterYSize</span>
+    <span class="n">proj</span> <span class="o">=</span> <span class="n">georef</span><span class="o">.</span><span class="n">GetProjection</span><span class="p">()</span>
+    <span class="n">geotrans</span> <span class="o">=</span> <span class="n">georef</span><span class="o">.</span><span class="n">GetGeoTransform</span><span class="p">()</span>
+    <span class="n">driver</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">GetDriverByName</span><span class="p">(</span><span class="s1">&#39;GTiff&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Create a new TIFF file and write the NDVI array to it</span>
+    <span class="n">color_infrared_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tmp_dir</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;color_infrared_comp.tif&#39;</span><span class="p">)</span>
+    <span class="n">color_infrared_ds</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">Create</span><span class="p">(</span><span class="n">color_infrared_path</span><span class="p">,</span> <span class="n">xsize</span><span class="p">,</span> <span class="n">ysize</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">gdal</span><span class="o">.</span><span class="n">GDT_Float32</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">color_infrared_ds</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">color_infrared_ds</span><span class="o">.</span><span class="n">SetProjection</span><span class="p">(</span><span class="n">proj</span><span class="p">)</span>
+        <span class="n">color_infrared_ds</span><span class="o">.</span><span class="n">SetGeoTransform</span><span class="p">(</span><span class="n">geotrans</span><span class="p">)</span>
+        <span class="n">color_infrared_ds</span><span class="o">.</span><span class="n">GetRasterBand</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">WriteArray</span><span class="p">(</span><span class="n">color_infrared</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">color_infrared_ds</span><span class="o">.</span><span class="n">GetRasterBand</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">WriteArray</span><span class="p">(</span><span class="n">color_infrared</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">color_infrared_ds</span><span class="o">.</span><span class="n">GetRasterBand</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">WriteArray</span><span class="p">(</span><span class="n">color_infrared</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+        <span class="n">color_infrared_ds</span><span class="o">.</span><span class="n">FlushCache</span><span class="p">()</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Failed to create TIFF file&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">color_infrared_path</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="bassmap.bassmap.get_false_color" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">get_false_color</span><span class="p">(</span><span class="n">swir2_band</span><span class="p">,</span> <span class="n">swir_band</span><span class="p">,</span> <span class="n">red_band</span><span class="p">,</span> <span class="n">georef</span><span class="p">)</span></code>
+
+
+<a href="#bassmap.bassmap.get_false_color" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Combines a short wave infrared 2 band, a short wave infrared band, and red band into a single 3-band image,
+where the a short wave infrared 2 band is displayed as red, the a short wave infrared band is displayed as green,
+and the red band is displayed as blue. This produces a false-color image that
+accentuates the vegetation in the scene.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>swir2_band</code></td>
+        <td><code>numpy array</code></td>
+        <td><p>A 2D numpy array representing a short wave infrared 2 band</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>swir_band</code></td>
+        <td><code>numpy array</code></td>
+        <td><p>A 2D numpy array representing a short wave infrared band</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>red_band</code></td>
+        <td><code>numpy array</code></td>
+        <td><p>A 2D numpy array representing a red band</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>georef</code></td>
+        <td><code>osgeo.gdal.Dataset</code></td>
+        <td><p>A GDAL dataset containing georeferencing information for the input bands.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>str</code></td>
+      <td><p>The path to the created false-color file.</p></td>
+    </tr>
+  </tbody>
+</table>
+<p><strong>Exceptions:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>ValueError</code></td>
+        <td><p>If the input arrays are not of the same shape.</p></td>
+      </tr>
+      <tr>
+        <td><code>ValueError</code></td>
+        <td><p>If the input arrays have different data types.</p></td>
+      </tr>
+      <tr>
+        <td><code>ValueError</code></td>
+        <td><p>If the input arrays have invalid values.</p></td>
+      </tr>
+      <tr>
+        <td><code>ImportError</code></td>
+        <td><p>If the GDAL library is not installed.</p></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Examples:</strong></p>
+    <h3 id="bassmap.bassmap.get_false_color--load-the-input-bands-as-numpy-arrays">Load the input bands as numpy arrays<a class="headerlink" href="#bassmap.bassmap.get_false_color--load-the-input-bands-as-numpy-arrays" title="Permanent link">&para;</a></h3>
+<p>swir2_band = gdal.Open('path/to/swir2_band.tif').ReadAsArray()
+swir_band = gdal.Open('path/to/swir_band.tif').ReadAsArray()
+red_band = gdal.Open('path/to/red_band.tif').ReadAsArray()
+georef = gdal.Open('path/to/reference.tif')</p>
+<h3 id="bassmap.bassmap.get_false_color--generate-a-false-color-composite-image-and-download-it">Generate a false-color composite image and download it<a class="headerlink" href="#bassmap.bassmap.get_false_color--generate-a-false-color-composite-image-and-download-it" title="Permanent link">&para;</a></h3>
+<p>false_color_path = false_color_path(swir2_band, swir_band, red_band, georef)</p>
+<h3 id="bassmap.bassmap.get_false_color--download-the-file-at-false_color_path">Download the file at false_color_path<a class="headerlink" href="#bassmap.bassmap.get_false_color--download-the-file-at-false_color_path" title="Permanent link">&para;</a></h3>
+
+        <details class="quote">
+          <summary>Source code in <code>bassmap/bassmap.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_false_color</span><span class="p">(</span><span class="n">swir2_band</span><span class="p">,</span> <span class="n">swir_band</span><span class="p">,</span> <span class="n">red_band</span><span class="p">,</span> <span class="n">georef</span><span class="p">):</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Combines a short wave infrared 2 band, a short wave infrared band, and red band into a single 3-band image,</span>
+<span class="sd">    where the a short wave infrared 2 band is displayed as red, the a short wave infrared band is displayed as green,</span>
+<span class="sd">    and the red band is displayed as blue. This produces a false-color image that</span>
+<span class="sd">    accentuates the vegetation in the scene.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        swir2_band (numpy array): A 2D numpy array representing a short wave infrared 2 band</span>
+<span class="sd">        swir_band (numpy array): A 2D numpy array representing a short wave infrared band</span>
+<span class="sd">        red_band (numpy array): A 2D numpy array representing a red band</span>
+<span class="sd">        georef (osgeo.gdal.Dataset): A GDAL dataset containing georeferencing information for the input bands.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: The path to the created false-color file.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError: If the input arrays are not of the same shape.</span>
+<span class="sd">        ValueError: If the input arrays have different data types.</span>
+<span class="sd">        ValueError: If the input arrays have invalid values.</span>
+<span class="sd">        ImportError: If the GDAL library is not installed.</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">        # Load the input bands as numpy arrays</span>
+<span class="sd">        swir2_band = gdal.Open(&#39;path/to/swir2_band.tif&#39;).ReadAsArray()</span>
+<span class="sd">        swir_band = gdal.Open(&#39;path/to/swir_band.tif&#39;).ReadAsArray()</span>
+<span class="sd">        red_band = gdal.Open(&#39;path/to/red_band.tif&#39;).ReadAsArray()</span>
+<span class="sd">        georef = gdal.Open(&#39;path/to/reference.tif&#39;)</span>
+
+<span class="sd">        # Generate a false-color composite image and download it</span>
+<span class="sd">        false_color_path = false_color_path(swir2_band, swir_band, red_band, georef)</span>
+<span class="sd">        # Download the file at false_color_path</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="kn">from</span> <span class="nn">osgeo</span> <span class="kn">import</span> <span class="n">gdal</span>
+
+    <span class="c1"># Combine the three bands into a single 3D array with 3 bands</span>
+    <span class="n">false_color</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">swir2_band</span><span class="p">,</span> <span class="n">swir_band</span><span class="p">,</span> <span class="n">red_band</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint16</span><span class="p">)</span>
+
+    <span class="c1"># Get the dimensions and georeferencing information from one of the input files</span>
+    <span class="n">xsize</span> <span class="o">=</span> <span class="n">georef</span><span class="o">.</span><span class="n">RasterXSize</span>
+    <span class="n">ysize</span> <span class="o">=</span> <span class="n">georef</span><span class="o">.</span><span class="n">RasterYSize</span>
+    <span class="n">proj</span> <span class="o">=</span> <span class="n">georef</span><span class="o">.</span><span class="n">GetProjection</span><span class="p">()</span>
+    <span class="n">geotrans</span> <span class="o">=</span> <span class="n">georef</span><span class="o">.</span><span class="n">GetGeoTransform</span><span class="p">()</span>
+    <span class="n">driver</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">GetDriverByName</span><span class="p">(</span><span class="s1">&#39;GTiff&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Create a new TIFF file and write the NDVI array to it</span>
+    <span class="n">false_color_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tmp_dir</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;false_color_comp.tif&#39;</span><span class="p">)</span>
+    <span class="n">false_color_ds</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">Create</span><span class="p">(</span><span class="n">false_color_path</span><span class="p">,</span> <span class="n">xsize</span><span class="p">,</span> <span class="n">ysize</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">gdal</span><span class="o">.</span><span class="n">GDT_Float32</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">false_color_ds</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">false_color_ds</span><span class="o">.</span><span class="n">SetProjection</span><span class="p">(</span><span class="n">proj</span><span class="p">)</span>
+        <span class="n">false_color_ds</span><span class="o">.</span><span class="n">SetGeoTransform</span><span class="p">(</span><span class="n">geotrans</span><span class="p">)</span>
+        <span class="n">false_color_ds</span><span class="o">.</span><span class="n">GetRasterBand</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">WriteArray</span><span class="p">(</span><span class="n">false_color</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">false_color_ds</span><span class="o">.</span><span class="n">GetRasterBand</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">WriteArray</span><span class="p">(</span><span class="n">false_color</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">false_color_ds</span><span class="o">.</span><span class="n">GetRasterBand</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">WriteArray</span><span class="p">(</span><span class="n">false_color</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+        <span class="n">false_color_ds</span><span class="o">.</span><span class="n">FlushCache</span><span class="p">()</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Failed to create TIFF file&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">false_color_path</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="bassmap.bassmap.get_health_veg" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">get_health_veg</span><span class="p">(</span><span class="n">nir_band</span><span class="p">,</span> <span class="n">swir_band</span><span class="p">,</span> <span class="n">blue_band</span><span class="p">,</span> <span class="n">georef</span><span class="p">)</span></code>
+
+
+<a href="#bassmap.bassmap.get_health_veg" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Combines a near infrared band, a short wave infrared band, and blue band into a single 3-band image,
+where the a near infrared band is displayed as red, the a short wave infrared band is displayed as green,
+and the blue band is displayed as blue. This produces a false-color image that
+accentuates the healthy vegetation in the scene.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>nir_band</code></td>
+        <td><code>numpy array</code></td>
+        <td><p>A 2D numpy array representing a near infrared band</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>swir_band</code></td>
+        <td><code>numpy array</code></td>
+        <td><p>A 2D numpy array representing a short wave infrared band</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>blue_band</code></td>
+        <td><code>numpy array</code></td>
+        <td><p>A 2D numpy array representing a blue band</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>georef</code></td>
+        <td><code>osgeo.gdal.Dataset</code></td>
+        <td><p>A GDAL dataset containing georeferencing information for the input bands.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>str</code></td>
+      <td><p>The path to the created healthy vegetation file.</p></td>
+    </tr>
+  </tbody>
+</table>
+<p><strong>Exceptions:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>ValueError</code></td>
+        <td><p>If the input arrays are not of the same shape.</p></td>
+      </tr>
+      <tr>
+        <td><code>ValueError</code></td>
+        <td><p>If the input arrays have different data types.</p></td>
+      </tr>
+      <tr>
+        <td><code>ValueError</code></td>
+        <td><p>If the input arrays have invalid values.</p></td>
+      </tr>
+      <tr>
+        <td><code>ImportError</code></td>
+        <td><p>If the GDAL library is not installed.</p></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Examples:</strong></p>
+    <h3 id="bassmap.bassmap.get_health_veg--load-the-input-bands-as-numpy-arrays">Load the input bands as numpy arrays<a class="headerlink" href="#bassmap.bassmap.get_health_veg--load-the-input-bands-as-numpy-arrays" title="Permanent link">&para;</a></h3>
+<p>nir_band = gdal.Open('path/to/nir_band.tif').ReadAsArray()
+swir_band = gdal.Open('path/to/swir_band.tif').ReadAsArray()
+blue_band = gdal.Open('path/to/blue_band.tif').ReadAsArray()
+georef = gdal.Open('path/to/reference.tif')</p>
+<h3 id="bassmap.bassmap.get_health_veg--generate-a-healthy-vegetation-composite-image-and-download-it">Generate a healthy vegetation composite image and download it<a class="headerlink" href="#bassmap.bassmap.get_health_veg--generate-a-healthy-vegetation-composite-image-and-download-it" title="Permanent link">&para;</a></h3>
+<p>healthy_veg_path = get_health_veg(nir_band, swir_band, blue_band, georef)</p>
+<h3 id="bassmap.bassmap.get_health_veg--download-the-file-at-healthy_veg_path">Download the file at healthy_veg_path<a class="headerlink" href="#bassmap.bassmap.get_health_veg--download-the-file-at-healthy_veg_path" title="Permanent link">&para;</a></h3>
+
+        <details class="quote">
+          <summary>Source code in <code>bassmap/bassmap.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_health_veg</span><span class="p">(</span><span class="n">nir_band</span><span class="p">,</span> <span class="n">swir_band</span><span class="p">,</span> <span class="n">blue_band</span><span class="p">,</span> <span class="n">georef</span><span class="p">):</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Combines a near infrared band, a short wave infrared band, and blue band into a single 3-band image,</span>
+<span class="sd">    where the a near infrared band is displayed as red, the a short wave infrared band is displayed as green,</span>
+<span class="sd">    and the blue band is displayed as blue. This produces a false-color image that</span>
+<span class="sd">    accentuates the healthy vegetation in the scene.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        nir_band (numpy array): A 2D numpy array representing a near infrared band</span>
+<span class="sd">        swir_band (numpy array): A 2D numpy array representing a short wave infrared band</span>
+<span class="sd">        blue_band (numpy array): A 2D numpy array representing a blue band</span>
+<span class="sd">        georef (osgeo.gdal.Dataset): A GDAL dataset containing georeferencing information for the input bands.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: The path to the created healthy vegetation file.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError: If the input arrays are not of the same shape.</span>
+<span class="sd">        ValueError: If the input arrays have different data types.</span>
+<span class="sd">        ValueError: If the input arrays have invalid values.</span>
+<span class="sd">        ImportError: If the GDAL library is not installed.</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">        # Load the input bands as numpy arrays</span>
+<span class="sd">        nir_band = gdal.Open(&#39;path/to/nir_band.tif&#39;).ReadAsArray()</span>
+<span class="sd">        swir_band = gdal.Open(&#39;path/to/swir_band.tif&#39;).ReadAsArray()</span>
+<span class="sd">        blue_band = gdal.Open(&#39;path/to/blue_band.tif&#39;).ReadAsArray()</span>
+<span class="sd">        georef = gdal.Open(&#39;path/to/reference.tif&#39;)</span>
+
+<span class="sd">        # Generate a healthy vegetation composite image and download it</span>
+<span class="sd">        healthy_veg_path = get_health_veg(nir_band, swir_band, blue_band, georef)</span>
+<span class="sd">        # Download the file at healthy_veg_path</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="kn">from</span> <span class="nn">osgeo</span> <span class="kn">import</span> <span class="n">gdal</span>
+
+    <span class="c1"># Combine the three bands into a single 3D array with 3 bands</span>
+    <span class="n">healthy_veg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">nir_band</span><span class="p">,</span> <span class="n">swir_band</span><span class="p">,</span> <span class="n">blue_band</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint16</span><span class="p">)</span>
+
+    <span class="c1"># Get the dimensions and georeferencing information from one of the input files</span>
+    <span class="n">xsize</span> <span class="o">=</span> <span class="n">georef</span><span class="o">.</span><span class="n">RasterXSize</span>
+    <span class="n">ysize</span> <span class="o">=</span> <span class="n">georef</span><span class="o">.</span><span class="n">RasterYSize</span>
+    <span class="n">proj</span> <span class="o">=</span> <span class="n">georef</span><span class="o">.</span><span class="n">GetProjection</span><span class="p">()</span>
+    <span class="n">geotrans</span> <span class="o">=</span> <span class="n">georef</span><span class="o">.</span><span class="n">GetGeoTransform</span><span class="p">()</span>
+    <span class="n">driver</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">GetDriverByName</span><span class="p">(</span><span class="s1">&#39;GTiff&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Create a new TIFF file and write the composite array to it</span>
+    <span class="n">healthy_veg_ds</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">Create</span><span class="p">(</span><span class="s1">&#39;/tmp/healthy_veg_comp.tif&#39;</span><span class="p">,</span> <span class="n">xsize</span><span class="p">,</span> <span class="n">ysize</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">gdal</span><span class="o">.</span><span class="n">GDT_UInt16</span><span class="p">)</span>
+
+    <span class="c1"># Create a new TIFF file and write the NDVI array to it</span>
+    <span class="n">healthy_veg_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tmp_dir</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;healthy_veg_comp.tif&#39;</span><span class="p">)</span>
+    <span class="n">healthy_veg_ds</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">Create</span><span class="p">(</span><span class="n">healthy_veg_path</span><span class="p">,</span> <span class="n">xsize</span><span class="p">,</span> <span class="n">ysize</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">gdal</span><span class="o">.</span><span class="n">GDT_Float32</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">healthy_veg_ds</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">healthy_veg_ds</span><span class="o">.</span><span class="n">SetProjection</span><span class="p">(</span><span class="n">proj</span><span class="p">)</span>
+        <span class="n">healthy_veg_ds</span><span class="o">.</span><span class="n">SetGeoTransform</span><span class="p">(</span><span class="n">geotrans</span><span class="p">)</span>
+        <span class="n">healthy_veg_ds</span><span class="o">.</span><span class="n">GetRasterBand</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">WriteArray</span><span class="p">(</span><span class="n">healthy_veg</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">healthy_veg_ds</span><span class="o">.</span><span class="n">GetRasterBand</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">WriteArray</span><span class="p">(</span><span class="n">healthy_veg</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">healthy_veg_ds</span><span class="o">.</span><span class="n">GetRasterBand</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">WriteArray</span><span class="p">(</span><span class="n">healthy_veg</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+        <span class="n">healthy_veg_ds</span><span class="o">.</span><span class="n">FlushCache</span><span class="p">()</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Failed to create TIFF file&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">healthy_veg_path</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="bassmap.bassmap.get_ndmi" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">get_ndmi</span><span class="p">(</span><span class="n">nir_band</span><span class="p">,</span> <span class="n">swir_band</span><span class="p">,</span> <span class="n">georef</span><span class="p">)</span></code>
+
+
+<a href="#bassmap.bassmap.get_ndmi" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Calculates the Normalized Difference Moisture Index (NDMI) from Near Infrared (NIR) and Shortwave Infrared (SWIR) bands.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>nir_band</code></td>
+        <td><code>numpy.ndarray</code></td>
+        <td><p>A 2D or 3D array containing the Near Infrared band data.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>swir_band</code></td>
+        <td><code>numpy.ndarray</code></td>
+        <td><p>A 2D or 3D array containing the Shortwave Infrared band data.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>georef</code></td>
+        <td><code>osgeo.gdal.Dataset</code></td>
+        <td><p>A GDAL dataset containing georeferencing information for the input bands.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>str</code></td>
+      <td><p>The path to the created NDMI file.</p></td>
+    </tr>
+  </tbody>
+</table>
+<p><strong>Exceptions:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>ValueError</code></td>
+        <td><p>If the input arrays are not of the same shape.</p></td>
+      </tr>
+      <tr>
+        <td><code>ValueError</code></td>
+        <td><p>If the input arrays have different data types.</p></td>
+      </tr>
+      <tr>
+        <td><code>ValueError</code></td>
+        <td><p>If the input arrays have invalid values.</p></td>
+      </tr>
+      <tr>
+        <td><code>ImportError</code></td>
+        <td><p>If the GDAL library is not installed.</p></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Examples:</strong></p>
+    <p>nir_band = gdal.Open('path/to/nir_band.tif').ReadAsArray()
+swir_band = gdal.Open('path/to/swir_band.tif').ReadAsArray()
+georef = gdal.Open('path/to/reference.tif')</p>
+<h3 id="bassmap.bassmap.get_ndmi--generate-an-ndmi-composite-image-and-download-it">Generate an NDMI composite image and download it<a class="headerlink" href="#bassmap.bassmap.get_ndmi--generate-an-ndmi-composite-image-and-download-it" title="Permanent link">&para;</a></h3>
+<p>ndmi_path = get_NDMI(red_band, nir_band, georef)</p>
+<h3 id="bassmap.bassmap.get_ndmi--download-the-file-at-ndvi_path">Download the file at ndvi_path<a class="headerlink" href="#bassmap.bassmap.get_ndmi--download-the-file-at-ndvi_path" title="Permanent link">&para;</a></h3>
+
+        <details class="quote">
+          <summary>Source code in <code>bassmap/bassmap.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_ndmi</span><span class="p">(</span><span class="n">nir_band</span><span class="p">,</span> <span class="n">swir_band</span><span class="p">,</span> <span class="n">georef</span><span class="p">):</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculates the Normalized Difference Moisture Index (NDMI) from Near Infrared (NIR) and Shortwave Infrared (SWIR) bands.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        nir_band (numpy.ndarray): A 2D or 3D array containing the Near Infrared band data.</span>
+<span class="sd">        swir_band (numpy.ndarray): A 2D or 3D array containing the Shortwave Infrared band data.</span>
+<span class="sd">        georef (osgeo.gdal.Dataset): A GDAL dataset containing georeferencing information for the input bands.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: The path to the created NDMI file.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError: If the input arrays are not of the same shape.</span>
+<span class="sd">        ValueError: If the input arrays have different data types.</span>
+<span class="sd">        ValueError: If the input arrays have invalid values.</span>
+<span class="sd">        ImportError: If the GDAL library is not installed.</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        nir_band = gdal.Open(&#39;path/to/nir_band.tif&#39;).ReadAsArray()</span>
+<span class="sd">        swir_band = gdal.Open(&#39;path/to/swir_band.tif&#39;).ReadAsArray()</span>
+<span class="sd">        georef = gdal.Open(&#39;path/to/reference.tif&#39;)</span>
+
+<span class="sd">        # Generate an NDMI composite image and download it</span>
+<span class="sd">        ndmi_path = get_NDMI(red_band, nir_band, georef)</span>
+<span class="sd">        # Download the file at ndvi_path</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="kn">from</span> <span class="nn">osgeo</span> <span class="kn">import</span> <span class="n">gdal</span>
+
+    <span class="c1"># Scale the input bands to the range of 0-255</span>
+    <span class="n">nir_band</span> <span class="o">=</span> <span class="p">(</span><span class="n">nir_band</span> <span class="o">/</span> <span class="mf">65535.0</span><span class="p">)</span> <span class="o">*</span> <span class="mf">255.0</span>
+    <span class="n">swir_band</span> <span class="o">=</span> <span class="p">(</span><span class="n">swir_band</span> <span class="o">/</span> <span class="mf">65535.0</span><span class="p">)</span> <span class="o">*</span> <span class="mf">255.0</span>
+
+    <span class="c1"># Calculate the NDMI from the NIR and SWIR bands</span>
+    <span class="n">ndmi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">nir_band</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="n">ndmi</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+    <span class="n">valid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">nir_band</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">swir_band</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">ndmi</span><span class="p">[</span><span class="n">valid</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">nir_band</span><span class="p">[</span><span class="n">valid</span><span class="p">]</span> <span class="o">-</span> <span class="n">swir_band</span><span class="p">[</span><span class="n">valid</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="n">nir_band</span><span class="p">[</span><span class="n">valid</span><span class="p">]</span> <span class="o">+</span> <span class="n">swir_band</span><span class="p">[</span><span class="n">valid</span><span class="p">])</span>
+
+    <span class="c1"># Get the dimensions and georeferencing information from one of the input files</span>
+    <span class="n">xsize</span> <span class="o">=</span> <span class="n">georef</span><span class="o">.</span><span class="n">RasterXSize</span>
+    <span class="n">ysize</span> <span class="o">=</span> <span class="n">georef</span><span class="o">.</span><span class="n">RasterYSize</span>
+    <span class="n">proj</span> <span class="o">=</span> <span class="n">georef</span><span class="o">.</span><span class="n">GetProjection</span><span class="p">()</span>
+    <span class="n">geotrans</span> <span class="o">=</span> <span class="n">georef</span><span class="o">.</span><span class="n">GetGeoTransform</span><span class="p">()</span>
+    <span class="n">driver</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">GetDriverByName</span><span class="p">(</span><span class="s1">&#39;GTiff&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Create a new TIFF file and write the NDVI array to it</span>
+    <span class="n">ndmi_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tmp_dir</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;ndmi_composite.tif&#39;</span><span class="p">)</span>
+    <span class="n">ndmi_ds</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">Create</span><span class="p">(</span><span class="n">ndmi_path</span><span class="p">,</span> <span class="n">xsize</span><span class="p">,</span> <span class="n">ysize</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">gdal</span><span class="o">.</span><span class="n">GDT_Float32</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">ndmi_ds</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">ndmi_ds</span><span class="o">.</span><span class="n">SetProjection</span><span class="p">(</span><span class="n">proj</span><span class="p">)</span>
+        <span class="n">ndmi_ds</span><span class="o">.</span><span class="n">SetGeoTransform</span><span class="p">(</span><span class="n">geotrans</span><span class="p">)</span>
+        <span class="n">ndmi_ds</span><span class="o">.</span><span class="n">GetRasterBand</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">WriteArray</span><span class="p">(</span><span class="n">ndmi</span><span class="p">)</span>
+        <span class="n">ndmi_ds</span><span class="o">.</span><span class="n">FlushCache</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Failed to create TIFF file&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">ndmi_path</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="bassmap.bassmap.get_truecolor" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">get_truecolor</span><span class="p">(</span><span class="n">red_band</span><span class="p">,</span> <span class="n">green_band</span><span class="p">,</span> <span class="n">blue_band</span><span class="p">,</span> <span class="n">georef</span><span class="p">)</span></code>
+
+
+<a href="#bassmap.bassmap.get_truecolor" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Generate a true-color composite image from red, green, and blue bands.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>red_band</code></td>
+        <td><code>ndarray</code></td>
+        <td><p>A 2D numpy array representing the red band.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>green_band</code></td>
+        <td><code>ndarray</code></td>
+        <td><p>A 2D numpy array representing the green band.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>blue_band</code></td>
+        <td><code>ndarray</code></td>
+        <td><p>A 2D numpy array representing the blue band.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>georef</code></td>
+        <td><code>osgeo.gdal.Dataset</code></td>
+        <td><p>A GDAL dataset containing georeferencing information for the input bands.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>str</code></td>
+      <td><p>The path to the created true color file.</p></td>
+    </tr>
+  </tbody>
+</table>
+<p><strong>Exceptions:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>ValueError</code></td>
+        <td><p>If the input arrays are not of the same shape.</p></td>
+      </tr>
+      <tr>
+        <td><code>ValueError</code></td>
+        <td><p>If the input arrays have different data types.</p></td>
+      </tr>
+      <tr>
+        <td><code>ValueError</code></td>
+        <td><p>If the input arrays have invalid values.</p></td>
+      </tr>
+      <tr>
+        <td><code>ImportError</code></td>
+        <td><p>If the GDAL library is not installed.</p></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Examples:</strong></p>
+    <h3 id="bassmap.bassmap.get_truecolor--load-the-red-green-and-blue-bands-from-geotiff-files">Load the red, green, and blue bands from GeoTIFF files<a class="headerlink" href="#bassmap.bassmap.get_truecolor--load-the-red-green-and-blue-bands-from-geotiff-files" title="Permanent link">&para;</a></h3>
+<p>red_band = gdal.Open('path/to/red_band.tif').ReadAsArray()
+green_band = gdal.Open('path/to/green_band.tif').ReadAsArray()
+blue_band = gdal.Open('path/to/blue_band.tif').ReadAsArray()
+georef = gdal.Open('path/to/reference.tif')</p>
+<h3 id="bassmap.bassmap.get_truecolor--generate-a-true-color-composite-image-and-download-it">Generate a true-color composite image and download it<a class="headerlink" href="#bassmap.bassmap.get_truecolor--generate-a-true-color-composite-image-and-download-it" title="Permanent link">&para;</a></h3>
+<p>true_color_path = true_color_path(red_band, green_band, blue_band, georef)</p>
+<h3 id="bassmap.bassmap.get_truecolor--download-the-file-at-true_color_path">Download the file at true_color_path<a class="headerlink" href="#bassmap.bassmap.get_truecolor--download-the-file-at-true_color_path" title="Permanent link">&para;</a></h3>
+
+        <details class="quote">
+          <summary>Source code in <code>bassmap/bassmap.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_truecolor</span><span class="p">(</span><span class="n">red_band</span><span class="p">,</span> <span class="n">green_band</span><span class="p">,</span> <span class="n">blue_band</span><span class="p">,</span> <span class="n">georef</span><span class="p">):</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate a true-color composite image from red, green, and blue bands.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        red_band (ndarray): A 2D numpy array representing the red band.</span>
+<span class="sd">        green_band (ndarray): A 2D numpy array representing the green band.</span>
+<span class="sd">        blue_band (ndarray): A 2D numpy array representing the blue band.</span>
+<span class="sd">        georef (osgeo.gdal.Dataset): A GDAL dataset containing georeferencing information for the input bands.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: The path to the created true color file.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError: If the input arrays are not of the same shape.</span>
+<span class="sd">        ValueError: If the input arrays have different data types.</span>
+<span class="sd">        ValueError: If the input arrays have invalid values.</span>
+<span class="sd">        ImportError: If the GDAL library is not installed.</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">        # Load the red, green, and blue bands from GeoTIFF files</span>
+<span class="sd">        red_band = gdal.Open(&#39;path/to/red_band.tif&#39;).ReadAsArray()</span>
+<span class="sd">        green_band = gdal.Open(&#39;path/to/green_band.tif&#39;).ReadAsArray()</span>
+<span class="sd">        blue_band = gdal.Open(&#39;path/to/blue_band.tif&#39;).ReadAsArray()</span>
+<span class="sd">        georef = gdal.Open(&#39;path/to/reference.tif&#39;)</span>
+
+<span class="sd">        # Generate a true-color composite image and download it</span>
+<span class="sd">        true_color_path = true_color_path(red_band, green_band, blue_band, georef)</span>
+<span class="sd">        # Download the file at true_color_path</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="kn">from</span> <span class="nn">osgeo</span> <span class="kn">import</span> <span class="n">gdal</span>
+
+    <span class="c1"># Combine the three bands into a single 3D array with 3 bands</span>
+    <span class="n">true_color</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">red_band</span><span class="p">,</span> <span class="n">green_band</span><span class="p">,</span> <span class="n">blue_band</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint16</span><span class="p">)</span>
+
+    <span class="c1"># Get the dimensions and georeferencing information from one of the input files</span>
+    <span class="n">xsize</span> <span class="o">=</span> <span class="n">georef</span><span class="o">.</span><span class="n">RasterXSize</span>
+    <span class="n">ysize</span> <span class="o">=</span> <span class="n">georef</span><span class="o">.</span><span class="n">RasterYSize</span>
+    <span class="n">proj</span> <span class="o">=</span> <span class="n">georef</span><span class="o">.</span><span class="n">GetProjection</span><span class="p">()</span>
+    <span class="n">geotrans</span> <span class="o">=</span> <span class="n">georef</span><span class="o">.</span><span class="n">GetGeoTransform</span><span class="p">()</span>
+    <span class="n">driver</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">GetDriverByName</span><span class="p">(</span><span class="s1">&#39;GTiff&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Create a new TIFF file and write the NDVI array to it</span>
+    <span class="n">true_color_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tmp_dir</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;true_color_comp.tif&#39;</span><span class="p">)</span>
+    <span class="n">true_color_ds</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">Create</span><span class="p">(</span><span class="n">true_color_path</span><span class="p">,</span> <span class="n">xsize</span><span class="p">,</span> <span class="n">ysize</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">gdal</span><span class="o">.</span><span class="n">GDT_Float32</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">true_color_ds</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">true_color_ds</span><span class="o">.</span><span class="n">SetProjection</span><span class="p">(</span><span class="n">proj</span><span class="p">)</span>
+        <span class="n">true_color_ds</span><span class="o">.</span><span class="n">SetGeoTransform</span><span class="p">(</span><span class="n">geotrans</span><span class="p">)</span>
+        <span class="n">true_color_ds</span><span class="o">.</span><span class="n">GetRasterBand</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">WriteArray</span><span class="p">(</span><span class="n">true_color</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">true_color_ds</span><span class="o">.</span><span class="n">GetRasterBand</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">WriteArray</span><span class="p">(</span><span class="n">true_color</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">true_color_ds</span><span class="o">.</span><span class="n">GetRasterBand</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">WriteArray</span><span class="p">(</span><span class="n">true_color</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+        <span class="n">true_color_ds</span><span class="o">.</span><span class="n">FlushCache</span><span class="p">()</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Failed to create TIFF file&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">true_color_path</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      Last update:
+      2023-05-11
+    
+  </small>
+</div>
+
+
+
+
+
+                
+
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "search.highlight"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.fac441b0.min.js"></script>
+      
+    
+  </body>
+</html>
