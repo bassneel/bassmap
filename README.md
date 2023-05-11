@@ -2,7 +2,7 @@
 
 [![image](https://img.shields.io/pypi/v/bassmap.svg)](https://pypi.python.org/pypi/bassmap)
 [![LinkedIn Badge](https://img.shields.io/badge/My-LinkedIn-blue)](https://www.linkedin.com/in/bassneel)
-
+![BassMap](https://github.com/bassneel/basspublicfiles/blob/main/bassmap_logo.png)
 
 **BassMap is an intuitive Python Package that allows the user to display a variety of features on an iPyLeaflet and Folium map display. In addition the Landsat 8 Tools allows the user to create a variety of multispectral composites using local GeoTIFFs from Landsat 8 spectral bands**
 
@@ -34,6 +34,10 @@
     -   Display shapefiles
     -   Display GeoJSON files
     -   Display vector files
+
+## Demo
+
+
 
 ## Credits
 
