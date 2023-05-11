@@ -53,6 +53,6 @@ setup(
     test_suite='tests',
     tests_require=test_requirements,
     url='https://github.com/bassneel/bassmap',
-    version='0.0.19',
+    version='version='0.0.19'',
     zip_safe=False,
 )
