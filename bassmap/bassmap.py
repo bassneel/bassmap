@@ -689,36 +689,6 @@ def get_NDVI(red_band, nir_band, georef):
         
     return ndvi_path
 
-def display_ndmi(ndmi_path):
-    import os.path
-    from localtileserver import get_leaflet_tile_layer, TileClient
-    from bassmap import Mapomatic
-
-    if not os.path.exists(ndmi_path):
-        raise ValueError(f"The file {ndmi_path} does not exist. Please run the get_ndmi function first.")
-    
-    client = TileClient(ndmi_path)
-    t = get_leaflet_tile_layer(client)
-
-    m = Mapomatic(center=client.center(), zoom=client.default_zoom)
-    m.add_layer(t)
-    m
-
-def display_ndvi(ndvi_path):
-    import os.path
-    from localtileserver import get_leaflet_tile_layer, TileClient
-    from bassmap import Mapomatic
-
-    if not os.path.exists(ndvi_path):
-        raise ValueError(f"The file {ndvi_path} does not exist. Please run the get_ndvi function first.")
-
-    client = TileClient(ndvi_path)
-    t = get_leaflet_tile_layer(client)
-
-    m = Mapomatic(center=client.center(), zoom=client.default_zoom)
-    m.add_layer(t)
-    m
-
 locations = {}
 
 def generate_input_points():
