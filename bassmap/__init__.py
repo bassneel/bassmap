@@ -2,6 +2,6 @@
 
 __author__ = """Bass Neel"""
 __email__ = 'maps.bassneel@gmail.com'
-__version__ = '__version__ = '0.0.19''
+__version__ = '__version__ = '0.0.20''
 
 from .bassmap import *
