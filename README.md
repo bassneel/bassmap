@@ -39,7 +39,7 @@
 
 ## Demo
 
-[![IMAGE ALT TEXT](http://img.youtube.com/vi/5dLXxnTaNv4/0.jpg)]((https://www.youtube.com/watch?v=5dLXxnTaNv4 "BassMap - Satellite Image Processing with Python")
+[![IMAGE ALT TEXT](http://img.youtube.com/vi/5dLXxnTaNv4/0.jpg)](https://www.youtube.com/watch?v=5dLXxnTaNv4 "BassMap - Satellite Image Processing with Python")
 
 ## Credits
 
