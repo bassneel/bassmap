@@ -6,13 +6,13 @@
 
 **BassMap is an intuitive Python Package that allows the user to display a variety of features on an iPyLeaflet and Folium map display. In addition the Landsat 8 Tools allows the user to create a variety of multispectral composites using local GeoTIFFs from Landsat 8 spectral bands**
 
-[BassMap on Streamlit](https://bassmap.streamlit.app/)
-
+- [GitHub](https://github.com/bassneel/bassmap)
+- [Documentation](https://bassneel.github.io/bassmap)
+- [Streamlit](https://bassmap.streamlit.app/)
 
 -   Free software: MIT license
 -   Documentation: https://bassneel.github.io/bassmap
     
-
 ## Features
 
 -   [Landsat 8 Tools](https://bassneel.github.io/bassmap/examples/Landsat_8_Tools/)
